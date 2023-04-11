@@ -72,7 +72,6 @@ material-dashboard-react
     │       ├── road.png
     ├── components
     │   ├── Cards
-    │   │   ├── ChartCard.jsx
     │   │   ├── ProfileCard.jsx
     │   │   ├── RegularCard.jsx
     │   │   ├── StatsCard.jsx

@@ -2,7 +2,7 @@
 // // // Cards
 // #############################
 
-import ChartCard from './Cards/ChartCard.jsx';
+
 import ProfileCard from './Cards/ProfileCard.jsx';
 import RegularCard from './Cards/RegularCard.jsx';
 import StatsCard from './Cards/StatsCard.jsx';
@@ -82,7 +82,7 @@ import A from './Typography/A.jsx';
 
 export {
     // Cards
-    ChartCard, ProfileCard, RegularCard, StatsCard, TasksCard,
+    ProfileCard, RegularCard, StatsCard, TasksCard,
     // CustomButtons
     Button, IconButton,
     // CustomInput
