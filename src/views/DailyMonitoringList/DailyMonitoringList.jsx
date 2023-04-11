@@ -31,10 +31,10 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={ ['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://evaaidev.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200  ] ,
-                                    [ "http://evaaidev.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Server is Up" ] ,
-                                    [ "http://evaaidev.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Server is Up" ] ,
-                                    [ "http://evaaidev.enginecal.com/core", <CustomButton  color="danger" children="Run Test"/> , "Pass" , 200 , "test passed" ] ,
+                                    [ "http://evaaidev.enginecal.com/#/pages/login" ,  <CustomButton children="Run Test"/> , "Pass" , 200  ] ,
+                                    [ "http://evaaidev.enginecal.com/#/dashboard", <CustomButton children="Run Test"/> , "Pass" , 200 , "Server is Up" ] ,
+                                    [ "http://evaaidev.enginecal.com/event", <CustomButton children="Run Test"/> , "Pass" , 200 , "Server is Up" ] ,
+                                    [ "http://evaaidev.enginecal.com/core", <CustomButton children="Run Test"/> , "Pass" , 200 , "test passed" ] ,
                                     // [ "Minerva Hooper" , "Curaçao" , "Sinaai-Waas" , "$23,789" ] ,
                                     // [ "Sage Rodriguez" , "Netherlands" , "Baileux" , "$56,142" ] ,
                                 ]}
