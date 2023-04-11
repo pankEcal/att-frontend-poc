@@ -1,19 +1,9 @@
 import React from 'react';
-import {
-    Grid, IconButton
-} from 'material-ui';
+import { Grid } from 'material-ui';
 
-import {
-    RegularCard, Table, ItemGrid
-} from 'components';
-
-
+import { RegularCard, Table, ItemGrid } from 'components';
 
 import CustomButton from "../../components/CustomButtons/Button";
-import { Link } from 'react-router-dom';
-import { CenterFocusStrong, FormatAlignCenter } from 'material-ui-icons';
-
-
 
 class DailyMonitoringList extends React.Component{
     render(){
