@@ -68,18 +68,8 @@ material-dashboard-react
     │   │   └── material-dashboard-react.css
     │   └── img
     │       ├── apple-icon.png
-    │       ├── cover.jpeg
-    │       ├── faces
-    │       │   └── marc.jpg
-    │       ├── favicon.png
-    │       ├── mask.png
-    │       ├── new_logo.png
-    │       ├── reactlogo.png
-    │       ├── sidebar-1.jpg
+    │       ├── logo2.png
     │       ├── sidebar-2.jpg
-    │       ├── sidebar-3.jpg
-    │       ├── sidebar-4.jpg
-    │       └── tim_80x80.png
     ├── components
     │   ├── Cards
     │   │   ├── ChartCard.jsx
