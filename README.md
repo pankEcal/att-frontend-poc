@@ -69,7 +69,7 @@ material-dashboard-react
     │   └── img
     │       ├── apple-icon.png
     │       ├── logo2.png
-    │       ├── sidebar-2.jpg
+    │       ├── road.png
     ├── components
     │   ├── Cards
     │   │   ├── ChartCard.jsx
