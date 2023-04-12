@@ -87,9 +87,6 @@ material-dashboard-react
     │   │   └── HeaderLinks.jsx
     │   ├── Sidebar
     │   │   └── Sidebar.jsx
-    │   ├── Snackbar
-    │   │   ├── Snackbar.jsx
-    │   │   └── SnackbarContent.jsx
     │   ├── Table
     │   │   └── Table.jsx
     │   ├── Tasks
