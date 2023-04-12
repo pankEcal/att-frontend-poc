@@ -101,14 +101,6 @@ const purpleCardHeader = {
     ...primaryBoxShadow,
 };
 
-const cardActions = {
-    margin: '0 20px 10px',
-    paddingTop: '10px',
-    borderTop: '1px solid #eeeeee',
-    height: 'auto',
-    ...defaultFont,
-};
-
 const cardHeader = {
     margin: '-20px 15px 0',
     borderRadius: '3px',

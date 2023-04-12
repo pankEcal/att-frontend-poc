@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui';
 
 import RegularCard from 'components/Cards/RegularCard';
 
-import { Button, IconButton as SearchButton } from 'components';
+import { Button } from 'components';
 
 import { Table } from 'components';
 
@@ -35,7 +35,7 @@ const style = {
 
 class LoadTestingPage extends React.Component {
     render() {
-        const { classes } = this.props;
+        
         return (
             <RegularCard
 

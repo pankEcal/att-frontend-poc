@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    withStyles, Card, CardContent, CardHeader, CardActions,
+    withStyles, Card, CardContent, CardHeader
 } from 'material-ui';
 import PropTypes from 'prop-types';
 
