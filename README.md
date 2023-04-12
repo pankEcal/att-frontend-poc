@@ -112,19 +112,11 @@ material-dashboard-react
     │   ├── app.jsx
     │   └── index.jsx
     ├── variables
-    │   ├── charts.jsx
-    │   ├── general.jsx
     │   └── styles.jsx
     └── views
-        ├── Dashboard
-        │   └── Dashboard.jsx
-        ├── Icons
-        │   └── Icons.jsx
-        ├── Maps
-        │   └── Maps.jsx
         ├── DailyMonitoringList
         │   └── DailyMonitoringList.jsx
-        ├── Typography
+        ├── LoadTesting
         │   └── LoadTesting.jsx
         └── UserProfile
             └── UserProfile.jsx

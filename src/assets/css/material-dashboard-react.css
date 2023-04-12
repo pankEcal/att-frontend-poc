@@ -40,15 +40,6 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-.ct-chart-line .ct-label, .ct-chart-bar .ct-label {
-    display: block;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-}
-
 .ct-label {
     fill: rgba(0, 0, 0, 0.4);
     line-height: 1;
