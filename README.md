@@ -73,7 +73,6 @@ material-dashboard-react
     ├── components
     │   ├── Cards
     │   │   ├── RegularCard.jsx
-    │   │   └── TasksCard.jsx
     │   ├── CustomButtons
     │   │   ├── Button.jsx
     │   │   └── IconButton.jsx

@@ -6,8 +6,6 @@
 
 import RegularCard from './Cards/RegularCard.jsx';
 
-import TasksCard from './Cards/TasksCard.jsx';
-
 // ##############################
 // // // CustomButtons
 // #############################
@@ -82,7 +80,7 @@ import A from './Typography/A.jsx';
 
 export {
     // Cards
-    RegularCard, TasksCard,
+    RegularCard,
     // CustomButtons
     Button, IconButton,
     // CustomInput
