@@ -5,7 +5,6 @@ import {
 import PropTypes from 'prop-types';
 
 import { tableStyle } from 'variables/styles';
-import { CenterFocusStrong } from 'material-ui-icons';
 
 class CustomTable extends React.Component {
     render(){

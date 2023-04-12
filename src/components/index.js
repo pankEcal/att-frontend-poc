@@ -46,12 +46,6 @@ import Sidebar from './Sidebar/Sidebar.jsx';
 import Table from './Table/Table.jsx';
 
 // ##############################
-// // // Tasks
-// #############################
-
-import Tasks from './Tasks/Tasks.jsx';
-
-// ##############################
 // // // Typography
 // #############################
 
@@ -81,8 +75,6 @@ export {
     Sidebar,
     // Table
     Table,
-    // Tasks
-    Tasks,
     // Typography
     P, Quote, Muted, Primary, Info, Success, Warning, Danger, Small, A,
 };
