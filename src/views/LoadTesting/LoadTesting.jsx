@@ -1,23 +1,11 @@
 import React from 'react';
-import {
-    withStyles
-} from 'material-ui';
+import { withStyles } from 'material-ui';
 
 import RegularCard from 'components/Cards/RegularCard';
 
-import {
-    P, Quote, Muted, Primary, Info, Success, Warning, Danger, Small
-} from 'components';
-
 import { Button, CustomInput, IconButton as SearchButton } from 'components';
 
-import {
-    Person, Notifications, Dashboard, Search,
-} from 'material-ui-icons';
-
-
 import { Table } from 'components';
-import CustomButton from "../../components/CustomButtons/Button";
 
 const style = {
     typo: {

@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-    Person, Notifications, Search,
-} from 'material-ui-icons';
-import classNames from 'classnames';
-import {
-    withStyles, IconButton, MenuItem, MenuList, Grow, Paper, ClickAwayListener, Hidden
-} from 'material-ui';
-import { Manager, Target, Popper } from 'react-popper';
+import { Search } from 'material-ui-icons';
 
-import { Button, CustomInput, IconButton as SearchButton } from 'components';
+import { withStyles } from 'material-ui';
+
+import { CustomInput, IconButton as SearchButton } from 'components';
 
 import { headerLinksStyle } from 'variables/styles';
 

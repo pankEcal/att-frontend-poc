@@ -8,7 +8,7 @@ import { regularCardStyle } from 'variables/styles';
 
 class RegularCard extends React.Component{
     render(){
-        const { classes, headerColor, plainCard, cardTitle, cardSubtitle, content, footer } = this.props;
+        const { classes, headerColor, plainCard, cardTitle, cardSubtitle, content } = this.props;
         return (
             <Card className={classes.card + (plainCard ? " " + classes.cardPlain:"")}>
                 <CardHeader
@@ -24,9 +24,7 @@ class RegularCard extends React.Component{
                 <CardContent>
                     {content}
                 </CardContent>
-                { footer !== undefined ? (<CardActions className={classes.cardActions}>
-                    {footer}
-                </CardActions>):null}
+                
             </Card>
         );
     }
@@ -42,8 +40,8 @@ RegularCard.propTypes = {
     headerColor: PropTypes.oneOf(['orange','green','red','blue','purple']),
     cardTitle: PropTypes.node,
     cardSubtitle: PropTypes.node,
-    content: PropTypes.node,
-    footer: PropTypes.node
+    content: PropTypes.node
+    
 };
 
 export default withStyles(regularCardStyle)(RegularCard);

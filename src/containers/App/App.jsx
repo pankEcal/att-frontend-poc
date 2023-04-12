@@ -13,7 +13,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import {
-    Header, Footer, Sidebar
+    Header, Sidebar
 } from 'components';
 
 import appRoutes from 'routes/app.jsx';
@@ -92,7 +92,6 @@ class App extends React.Component{
                                 </div>
                             )
                     }
-                    {this.getRoute() ? (<Footer />):(null)}
                 </div>
             </div>
         );
