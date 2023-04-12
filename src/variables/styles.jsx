@@ -501,30 +501,7 @@ const headerLinksStyle = theme => ({
             marginRight: '15px',
         },
     },
-    notifications: {
-        zIndex: '4',
-        [theme.breakpoints.up('md')]:{
-            position: 'absolute',
-            top: '5px',
-            border: '1px solid #FFF',
-            right: '10px',
-            fontSize: '9px',
-            background: dangerColor,
-            color: '#FFFFFF',
-            minWidth: '16px',
-            height: '16px',
-            borderRadius: '10px',
-            textAlign: 'center',
-            lineHeight: '16px',
-            verticalAlign: 'middle',
-            display: 'block',
-        },
-        [theme.breakpoints.down('sm')]:{
-            ...defaultFont,
-            fontSize: '14px',
-            marginRight: '8px'
-        },
-    },
+    
     dropdown: {
         borderRadius: '3px',
         border: '0',

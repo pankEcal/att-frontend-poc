@@ -125,8 +125,6 @@ material-dashboard-react
         │   └── Icons.jsx
         ├── Maps
         │   └── Maps.jsx
-        ├── Notifications
-        │   └── Notifications.jsx
         ├── DailyMonitoringList
         │   └── DailyMonitoringList.jsx
         ├── Typography
