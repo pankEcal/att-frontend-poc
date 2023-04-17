@@ -6,7 +6,7 @@ import { ContentPaste, LibraryBooks } from 'material-ui-icons';
 
 const appRoutes = [
     
-    { path: "/daily-monitoring", sidebarName: "Daily Monitoring", navbarName: "API List", icon: ContentPaste, component: DailyMonitoringList },
+    { path: "/daily-monitoring", sidebarName: "Daily Monitoring", navbarName: "Daily Monitoring API List", icon: ContentPaste, component: DailyMonitoringList },
    
     { path: "/load-testing", sidebarName: "Load Testing", navbarName: "Load Testing", icon: LibraryBooks, component: LoadTesting },
     
