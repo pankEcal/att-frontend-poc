@@ -91,17 +91,6 @@ material-dashboard-react
     │   │   └── Table.jsx
     │   ├── Tasks
     │   │   └── Tasks.jsx
-    │   ├── Typography
-    │   │   ├── A.jsx
-    │   │   ├── Danger.jsx
-    │   │   ├── Info.jsx
-    │   │   ├── Muted.jsx
-    │   │   ├── P.jsx
-    │   │   ├── Primary.jsx
-    │   │   ├── Quote.jsx
-    │   │   ├── Small.jsx
-    │   │   ├── Success.jsx
-    │   │   └── Warning.jsx
     │   └── index.js
     ├── containers
     │   └── App

@@ -1,8 +1,10 @@
 import React from 'react';
 import {
-    withStyles, Card, CardContent, CardHeader
+    withStyles, Card, CardContent, CardHeader, Button
 } from 'material-ui';
+
 import PropTypes from 'prop-types';
+
 
 import { regularCardStyle } from 'variables/styles';
 
@@ -18,6 +20,12 @@ class RegularCard extends React.Component{
                         subheader: classes.cardSubtitle,
                         
                     }}
+                    action={
+                        <div>
+                          <Button onClick={(event) => console.log("Run all button clicked")} >Run All</Button>
+                        </div>
+                      }                   
+
                     title={cardTitle}
                     subheader={cardSubtitle}
                 />
