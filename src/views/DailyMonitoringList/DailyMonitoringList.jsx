@@ -18,15 +18,44 @@ class DailyMonitoringList extends React.Component{
                             <Table
                                 
                                 tableHeaderColor="primary"
-                                tableHead={ ['Api','Tests','Status','Status Code','Message']}
+                                tableHead={ ['API','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://evaaidev.enginecal.com/#/pages/login" ,  <CustomButton children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "http://evaaidev.enginecal.com/#/dashboard", <CustomButton children="Run Test"/> , "Pass" , 200 , "Server is Up" ] ,
-                                    [ "http://evaaidev.enginecal.com/event", <CustomButton children="Run Test"/> , "Pass" , 200 , "Server is Up" ] ,
-                                    [ "http://evaaidev.enginecal.com/core", <CustomButton children="Run Test"/> , "Pass" , 200 , "test passed" ] ,
+                                    [ 
+                                        "http://evaaidev.enginecal.com/#/pages/login" ,  
+                                        <CustomButton children="Run Test" onClick={(event) => 
+                                            // console.log("Run test button clicked")
+                                            console.log("Run test button clicked")
+                                            
+                                        } /> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://evaaidev.enginecal.com/#/dashboard", 
+                                        <CustomButton children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Server is Up" 
+                                    ] ,
+                                    [ 
+                                        "http://evaaidev.enginecal.com/event", 
+                                        <CustomButton children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Server is Up" ] ,
+                                    [ 
+                                        "http://evaaidev.enginecal.com/core", 
+                                        <CustomButton children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "test passed" 
+                                    ] ,
                                    
                                 ]}
+                
                             />
+                            
                         }
                     />
                 </ItemGrid>
@@ -38,10 +67,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "https://evaai.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed"  ] ,
-                                    [ "https://evaai.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "https://evaai.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "https://evaai.enginecal.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
+                                    [ 
+                                        "https://evaai.enginecal.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
+                                    [ 
+                                        "https://evaai.enginecal.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evaai.enginecal.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evaai.enginecal.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                     
                                 ]}
                             />
@@ -56,10 +109,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://tvseoldev.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed"  ] ,
-                                    [ "http://tvseoldev.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "http://tvseoldev.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "http://tvseoldev.enginecal.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
+                                    [ 
+                                        "http://tvseoldev.enginecal.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
+                                    [ 
+                                        "http://tvseoldev.enginecal.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvseoldev.enginecal.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvseoldev.enginecal.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
@@ -73,10 +150,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "https://evaeol.tvsmotor.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed"  ] ,
-                                    [ "https://evaeol.tvsmotor.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "https://evaeol.tvsmotor.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "https://evaeol.tvsmotor.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
+                                    [ 
+                                        "https://evaeol.tvsmotor.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
+                                    [ 
+                                        "https://evaeol.tvsmotor.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evaeol.tvsmotor.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evaeol.tvsmotor.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
@@ -90,10 +191,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://evactr.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed"  ] ,
-                                    [ "http://evactr.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "http://evactr.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
-                                    [ "http://evactr.enginecal.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , "Test passed" ] ,
+                                    [ 
+                                        "http://evactr.enginecal.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
+                                    [ 
+                                        "http://evactr.enginecal.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://evactr.enginecal.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://evactr.enginecal.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
@@ -107,10 +232,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://tvsctrdev.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/>  ] ,
-                                    [ "http://tvsctrdev.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "http://tvsctrdev.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "http://tvsctrdev.enginecal.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
+                                    [ 
+                                        "http://tvsctrdev.enginecal.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" ,
+                                        200 , 
+                                        "Test passed"   
+                                    ] ,
+                                    [ 
+                                        "http://tvsctrdev.enginecal.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
+                                    [ 
+                                        "http://tvsctrdev.enginecal.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                     ] ,
+                                    [ 
+                                        "http://tvsctrdev.enginecal.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
@@ -124,10 +273,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://tvsrdsdev.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/>  ] ,
-                                    [ "http://tvsrdsdev.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "http://tvsrdsdev.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "http://tvsrdsdev.enginecal.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
@@ -142,10 +315,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "https://evards.tvsmotor.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/>  ] ,
-                                    [ "https://evards.tvsmotor.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "https://evards.tvsmotor.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "https://evards.tvsmotor.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
@@ -159,10 +356,34 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "http://tvsrdsdev.enginecal.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/>  ] ,
-                                    [ "http://tvsrdsdev.enginecal.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "http://tvsrdsdev.enginecal.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "http://tvsrdsdev.enginecal.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
+                                    [ 
+                                        "http://tvsrdsdev.enginecal.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed"  
+                                    ] ,
                                 ]}
                             />
                         }
@@ -176,17 +397,43 @@ class DailyMonitoringList extends React.Component{
                                 tableHeaderColor="primary"
                                 tableHead={['Api','Tests','Status','Status Code','Message']}
                                 tableData={[
-                                    [ "https://evards.tvsmotor.com/#/pages/login" ,  <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/>  ] ,
-                                    [ "https://evards.tvsmotor.com/#/dashboard", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "https://evards.tvsmotor.com/event", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
-                                    [ "https://evards.tvsmotor.com/core", <CustomButton  color="red" children="Run Test"/> , "Pass" , 200 , <CustomButton  color="red" children="Log"/> ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/#/pages/login" ,  
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/#/dashboard", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/event", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
+                                    [ 
+                                        "https://evards.tvsmotor.com/core", 
+                                        <CustomButton  color="red" children="Run Test"/> , 
+                                        "Pass" , 
+                                        200 , 
+                                        "Test passed" 
+                                    ] ,
                                 ]}
                             />
                         }
                     />
                 </ItemGrid>
             </Grid>
+            
         );
+        
     }
 }
 
