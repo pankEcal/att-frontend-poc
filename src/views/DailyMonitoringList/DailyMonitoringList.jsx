@@ -1,12 +1,15 @@
 import React from 'react';
-import { Grid } from 'material-ui';
+import { Grid, Button } from 'material-ui';
 
 import { RegularCard, Table, ItemGrid } from 'components';
 
 import CustomButton from "../../components/CustomButtons/Button";
 
+
 class DailyMonitoringList extends React.Component{
     render(){
+
+        
         return (
             <Grid container>
                 <ItemGrid xs={12} sm={12} md={12}>
@@ -22,11 +25,9 @@ class DailyMonitoringList extends React.Component{
                                 tableData={[
                                     [ 
                                         "http://evaaidev.enginecal.com/#/pages/login" ,  
-                                        <CustomButton children="Run Test" onClick={(event) => 
-                                            // console.log("Run test button clicked")
-                                            console.log("Run test button clicked")
-                                            
-                                        } /> , 
+                                        <Button  onClick={
+                                            (event) => console.log("Run test button clicked")   
+                                            } >Run Test</Button> , 
                                         "Pass" , 
                                         200 , 
                                         "Test passed" 
