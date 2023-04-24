@@ -14,18 +14,34 @@ import { regularCardStyle } from 'variables/styles';
 const url = 'http://localhost:8000/dailymonitor/apis';
 
 const fetchData = async () => {
-    const response = await fetch(url);
-    console.log(response);
+    // const response = await fetch(url);
+    // console.log(response);
+    // console.log(response.json());
+    // return response;
+
+
+    
+//return obj;
 }
+
+function processResult(result){
+    //console.log(result);
+    let dataArray = result.body["data"];
+    
+    dataArray.forEach((value) => {
+        console.log(value);
+    });
+}
+
 // console.log("fetching data: "+fetchData);
 
 class RegularCard extends React.Component{
     render(){
         const { classes, headerColor, plainCard, cardTitle, cardSubtitle, content } = this.props;
-        const onClickHandler = ()=> {
-            console.log("getting response")
-            // fetchData();
-           console.log("fetching data: "+fetchData())
+        const onClickHandler = async ()=> {
+            var response =  await fetch(url)
+            .then(r =>  r.json().then(data => ({status: r.status, body: data})))
+            .then(obj => processResult(obj));
         }
         // console.log("onClickHandler response: "+onClickHandler);
 
