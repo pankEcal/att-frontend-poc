@@ -21,7 +21,7 @@ class DailyMonitoringList extends React.Component{
                             <Table
                                 
                                 tableHeaderColor="primary"
-                                tableHead={ ['API','Tests','Status','Status Code','Message']}
+                                tableHead={ ['API','Tests','Status','Message']}
                                 tableData={[
                                     [ 
                                         "http://evaaidev.enginecal.com/#/pages/login" ,  
@@ -29,27 +29,31 @@ class DailyMonitoringList extends React.Component{
                                             (event) => console.log("Run test button clicked")   
                                             } >Run Test</Button> , 
                                         "Pass" , 
-                                        200 , 
+                                        
                                         "Test passed" 
                                     ] ,
                                     [ 
                                         "http://evaaidev.enginecal.com/#/dashboard", 
-                                        <CustomButton children="Run Test"/> , 
+                                        <button onClick={
+                                            (event) => console.log("Run test button clicked")   
+                                            }
+                                        
+                                        >run test</button> , 
                                         "Pass" , 
-                                        200 , 
+                                       
                                         "Server is Up" 
                                     ] ,
                                     [ 
                                         "http://evaaidev.enginecal.com/event", 
                                         <CustomButton children="Run Test"/> , 
                                         "Pass" , 
-                                        200 , 
+                                     
                                         "Server is Up" ] ,
                                     [ 
                                         "http://evaaidev.enginecal.com/core", 
                                         <CustomButton children="Run Test"/> , 
                                         "Pass" , 
-                                        200 , 
+                                      
                                         "test passed" 
                                     ] ,
                                    
@@ -60,7 +64,7 @@ class DailyMonitoringList extends React.Component{
                         }
                     />
                 </ItemGrid>
-                <ItemGrid xs={12} sm={12} md={12}>
+                {/* <ItemGrid xs={12} sm={12} md={12}>
                     <RegularCard
                         cardTitle="EVA AI PRODUCTION"
                         content={
@@ -430,7 +434,7 @@ class DailyMonitoringList extends React.Component{
                             />
                         }
                     />
-                </ItemGrid>
+                </ItemGrid> */}
             </Grid>
             
         );
