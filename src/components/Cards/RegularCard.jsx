@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 
 import {
-    withStyles, Card, CardContent, CardHeader, Button
+    withStyles, Card, CardContent, CardHeader, Button, MenuItem, Select
 } from 'material-ui';
 
 import PropTypes from 'prop-types';
@@ -39,7 +39,7 @@ class RegularCard extends React.Component{
     render(){
         const { classes, headerColor, plainCard, cardTitle, cardSubtitle, content } = this.props;
         const onClickHandler = async ()=> {
-            var response =  await fetch(url)
+            await fetch(url)
             .then(r =>  r.json().then(data => ({status: r.status, body: data})))
             .then(obj => processResult(obj));
         }
@@ -49,6 +49,7 @@ class RegularCard extends React.Component{
         return (
             <Card className={classes.card + (plainCard ? " " + classes.cardPlain:"")}>
                 <CardHeader
+                    style= {{marginRight: '80%'}}
                     classes={{
                         root: classes.cardHeader + " " + classes[headerColor+"CardHeader"] + (plainCard ? " " + classes.cardPlainHeader:""),
                         title: classes.cardTitle,
@@ -57,13 +58,14 @@ class RegularCard extends React.Component{
                     }}
                     action={
                         <div>
-                          <Button color="white" onClick={
-                            // (event) => console.log("Run all button clicked")
-                            // alert("Welcome to our ATT Application!")
-                            onClickHandler
-                            // console.log(onClickHandler)
-                            
-                            } >Run All</Button>
+                            <Select color="secondary" value={"server"} label="Server">
+                                <MenuItem value={"dev"}>Dev</MenuItem>
+                                <MenuItem value={"prod"}>Prod</MenuItem>
+                                <MenuItem value={"test"}>Test</MenuItem>
+                            </Select>
+                            {/* <Button color="white" onClick={
+                            onClickHandler 
+                            } >Run All</Button> */}
                         </div>
                       }                   
 

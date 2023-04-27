@@ -15,7 +15,7 @@ class DailyMonitoringList extends React.Component{
                 <ItemGrid xs={12} sm={12} md={12}>
                     <RegularCard
                         
-                        cardTitle="EVA AI DEVELOPMENT"
+                        cardTitle="SELECT"
                         
                         content={
                             <Table
@@ -38,7 +38,7 @@ class DailyMonitoringList extends React.Component{
                                             (event) => console.log("Run test button clicked")   
                                             }
                                         
-                                        >run test</button> , 
+                                        >Run test</button> , 
                                         "Pass" , 
                                        
                                         "Server is Up" 
