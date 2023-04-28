@@ -21,6 +21,8 @@ class RegularButton extends React.Component{
     }
 }
 
+
+
 RegularButton.propTypes = {
     classes: PropTypes.object.isRequired,
     color: PropTypes.oneOf(['primary','info','success','warning','danger','rose','white','simple','transparent', 'red']),

@@ -3,13 +3,14 @@ import React from 'react';
 import { useEffect, useState } from "react";
 
 import {
-    withStyles, Card, CardContent, CardHeader, Button, MenuItem, Select
+    withStyles, Card, CardContent, CardHeader, Button, MenuItem, Select, InputLabel
 } from 'material-ui';
 
 import PropTypes from 'prop-types';
 
 
 import { regularCardStyle } from 'variables/styles';
+import { Label } from 'material-ui-icons';
 
 const url = 'http://localhost:8000/dailymonitor/apis';
 
@@ -33,8 +34,6 @@ function processResult(result){
     });
 }
 
-// console.log("fetching data: "+fetchData);
-
 class RegularCard extends React.Component{
     render(){
         const { classes, headerColor, plainCard, cardTitle, cardSubtitle, content } = this.props;
@@ -43,35 +42,66 @@ class RegularCard extends React.Component{
             .then(r =>  r.json().then(data => ({status: r.status, body: data})))
             .then(obj => processResult(obj));
         }
-        // console.log("onClickHandler response: "+onClickHandler);
+     
+        // const [server, setServer] = React.useState('');
+        // const handleChange = async (event) => {
+        //     setServer(event.target.value);
+        //   };
 
+        
         
         return (
             <Card className={classes.card + (plainCard ? " " + classes.cardPlain:"")}>
                 <CardHeader
-                    style= {{marginRight: '80%'}}
+                   
                     classes={{
                         root: classes.cardHeader + " " + classes[headerColor+"CardHeader"] + (plainCard ? " " + classes.cardPlainHeader:""),
-                        title: classes.cardTitle,
+                      
+                         title: classes.cardTitle,
                         subheader: classes.cardSubtitle,
                         
                     }}
-                    action={
-                        <div>
-                            <Select color="secondary" value={"server"} label="Server">
-                                <MenuItem value={"dev"}>Dev</MenuItem>
-                                <MenuItem value={"prod"}>Prod</MenuItem>
-                                <MenuItem value={"test"}>Test</MenuItem>
-                            </Select>
-                            {/* <Button color="white" onClick={
-                            onClickHandler 
-                            } >Run All</Button> */}
-                        </div>
-                      }                   
-
                     title={cardTitle}
                     subheader={cardSubtitle}
+
+                    action={
+                        <div>
+                            <InputLabel style={{
+                               marginRight : '2em',
+                               color: "#ffffff"
+                            }}>Base URL</InputLabel>
+                            <Select 
+                            style = {{
+                                marginRight : '2em'
+                                
+                             }}
+                            
+                             value={"server"}  label="Server">
+                                <MenuItem value={"dev"}
+                                onClick={ console.log("dev base url selected") }
+                                >
+                                http://evaaidev.enginecal.com/
+                                </MenuItem>
+                                <MenuItem value={"prod"}>https://evaai.enginecal.com/</MenuItem>
+                                <MenuItem value={"test"}>Test</MenuItem>
+                            </Select>
+                           
+                            <Button  style={{
+                                color: "white"
+                            }} onClick={
+                            onClickHandler 
+                            } >Run All</Button>
+                           
+                        
+                        </div>
+                        
+                      }   
+                    
+                    
+                    
                 />
+                
+                
                 <CardContent>
                     {content}
                 </CardContent>

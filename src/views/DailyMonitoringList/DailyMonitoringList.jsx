@@ -15,7 +15,7 @@ class DailyMonitoringList extends React.Component{
                 <ItemGrid xs={12} sm={12} md={12}>
                     <RegularCard
                         
-                        cardTitle="SELECT"
+                        cardTitle="SYSTEM"
                         
                         content={
                             <Table
@@ -25,9 +25,14 @@ class DailyMonitoringList extends React.Component{
                                 tableData={[
                                     [ 
                                         "http://evaaidev.enginecal.com/#/pages/login" ,  
-                                        <Button  onClick={
+                                        // <Button  onClick={
+                                        //     (event) => console.log("Run test button clicked")   
+                                        //     } >Run Test</Button> , 
+                                        <button onClick={
                                             (event) => console.log("Run test button clicked")   
-                                            } >Run Test</Button> , 
+                                            }
+                                        
+                                        >Run test</button> ,
                                         "Pass" , 
                                         
                                         "Test passed" 
@@ -45,13 +50,22 @@ class DailyMonitoringList extends React.Component{
                                     ] ,
                                     [ 
                                         "http://evaaidev.enginecal.com/event", 
-                                        <CustomButton children="Run Test"/> , 
+                                        <button onClick={
+                                            (event) => console.log("Run test button clicked")   
+                                            }
+                                        
+                                        >Run test</button> ,
                                         "Pass" , 
                                      
                                         "Server is Up" ] ,
                                     [ 
                                         "http://evaaidev.enginecal.com/core", 
-                                        <CustomButton children="Run Test"/> , 
+                                        // <CustomButton children="Run Test"/> , 
+                                        <button onClick={
+                                            (event) => console.log("Run test button clicked")   
+                                            }
+                                        
+                                        >Run test</button> ,
                                         "Pass" , 
                                       
                                         "test passed" 
