@@ -1,4 +1,4 @@
-import { Grid, Button } from "material-ui";
+import { Grid } from "material-ui";
 
 import { RegularCard, Table, ItemGrid } from "components";
 
