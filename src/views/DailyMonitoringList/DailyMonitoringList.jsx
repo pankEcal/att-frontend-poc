@@ -2,7 +2,50 @@ import { Grid } from "material-ui";
 
 import { RegularCard, Table, ItemGrid } from "components";
 
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
+const url = "http://localhost:8000/dailymonitor/apis";
+
+function processResult(result) {
+  let dataArray = result.body["data"];
+
+  dataArray.forEach((value) => {
+    console.log(value);
+  });
+}
+const message = () => {
+  // const [message, setMessage] = useState("");
+  // const [updated, setUpdated] = useState(message);
+  // const handleChange = (event) => {
+  //   setMessage(event.target.value);
+  // };
+  // const handleClick = () => {
+  //   // 👇 "message" stores input field value
+  //   setUpdated(message);
+  // };
+  // return (
+  //   <div>
+  //     <input
+  //       type="text"
+  //       id="message"
+  //       name="message"
+  //       onChange={handleChange}
+  //       value={message}
+  //     />
+  //     <h2>Message: {message}</h2>
+  //     <h2>Updated: {updated}</h2>
+  //     <button onClick={handleClick}>Update</button>
+  //   </div>
+  // );
+};
+const baseUrl = "https://evaai.enginecal.com/";
+const apiLinks = [
+  "core/v1/bike-intell/checklogin",
+  "event/v1/bike-intell/fileupload",
+  "event",
+  "core",
+];
 
 function DailyMonitoringList() {
   return (
@@ -16,7 +59,16 @@ function DailyMonitoringList() {
               tableHead={["API", "Tests", "Status", "Message"]}
               tableData={[
                 [
-                  "http://evaaidev.enginecal.com/#/pages/login",
+                  <select
+                    onChange={(e) => {
+                      console.log("value: ", e.target.value);
+                    }}
+                  >
+                    Select base urls:
+                    {apiLinks.map((apiLink) => (
+                      <option>{apiLink}</option>
+                    ))}
+                  </select>,
                   <button
                     onClick={(event) => console.log("Run test button clicked")}
                   >
@@ -49,8 +101,11 @@ function DailyMonitoringList() {
                   "Server is Up",
                 ],
                 [
-                  "http://evaaidev.enginecal.com/core",
-                  // <CustomButton children="Run Test"/> ,
+                  <button onClick={message}>
+                    {" "}
+                    http://evaaidev.enginecal.com/event{" "}
+                  </button>,
+
                   <button
                     onClick={(event) => console.log("Run test button clicked")}
                   >

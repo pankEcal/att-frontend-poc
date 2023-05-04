@@ -16,7 +16,12 @@ import { regularCardStyle } from "variables/styles";
 const url = "http://localhost:8000/dailymonitor/apis";
 
 const baseUrl = "https://evaai.enginecal.com/";
-const apiLinks = ["/#/pages/login", "#/dashboard", "event", "core"];
+const apiLinks = [
+  "core/v1/bike-intell/checklogin",
+  "event/v1/bike-intell/fileupload",
+  "event",
+  "core",
+];
 
 function processResult(result) {
   let dataArray = result.body["data"];
