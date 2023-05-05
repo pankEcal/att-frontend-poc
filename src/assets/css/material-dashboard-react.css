@@ -225,6 +225,9 @@ footer ul li a:hover {
     }
     
 }
+
+    /* Loadtesting text color */
+label span { color: black; }
 /* .dropdown-container {
     text-align: left;
     border: 1px solid #ccc;

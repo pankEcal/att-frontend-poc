@@ -99,7 +99,9 @@ function LoadTestingPage() {
             }}
           />
 
-          <label htmlFor="uploadUrl">upload url</label>
+          <label htmlFor="uploadUrl">
+            <span>upload url</span>:
+          </label>
           <input
             type="text"
             name="uploadUrl"
@@ -111,7 +113,9 @@ function LoadTestingPage() {
           />
           <span>&nbsp; &nbsp; &nbsp; </span>
 
-          <label htmlFor="repeatation">repeatation &nbsp; </label>
+          <label htmlFor="repeatation">
+            <span>repeatation &nbsp;</span>{" "}
+          </label>
           <input
             type="number"
             value={repeatation}
@@ -124,7 +128,9 @@ function LoadTestingPage() {
 
           <span>&nbsp; &nbsp; &nbsp; </span>
 
-          <label htmlFor="gap">gap &nbsp;</label>
+          <label htmlFor="gap">
+            <span>gap &nbsp;</span>
+          </label>
           <input
             type="number"
             value={gap}
@@ -138,7 +144,7 @@ function LoadTestingPage() {
           <br></br>
           <button
             // class="MuiButtonBase-root-84 MuiButton-root-70 RegularButton-button-174 RegularButton-danger-180 RegularButton-fullWidth-175"
-            class="MuiButtonBase-root-84 MuiButton-root-70 RegularButton-button-174 RegularButton-danger-180"
+            class="MuiButtonBase-root-84 MuiButton-root-70 RegularButton-button-174 RegularButton-danger-180 RegularButton-fullWidth-175"
             type="submit"
           >
             POST /fileupload
