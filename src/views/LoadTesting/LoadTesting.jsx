@@ -196,13 +196,15 @@ function LoadTestingPage() {
                     {row.url}
                   </TableCell>
                   <TableCell align="right">{row.testStatus}</TableCell>
-                  <TableCell align="right">{row.testDuration}</TableCell>
+                  <TableCell align="right">
+                    {row.testDuration || row.date}
+                  </TableCell>
 
                   <TableCell align="right">
                     {row.serverResponse.statusCode}
                   </TableCell>
                   <TableCell align="right">
-                    {row.serverResponse.successMessage}
+                    {row.serverResponse.successMessage || row.message}
                   </TableCell>
                 </TableRow>
               ))}

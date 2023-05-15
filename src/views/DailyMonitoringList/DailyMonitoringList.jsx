@@ -5,6 +5,13 @@ import { RegularCard, Table, ItemGrid } from "components";
 import React, { useState } from "react";
 import axios from "axios";
 
+import { Table as ReportTable } from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+
 const url = "http://localhost:8000/dailymonitor/apis";
 
 function processResult(result) {
@@ -119,6 +126,40 @@ function DailyMonitoringList() {
           }
         />
       </ItemGrid>
+      <div>
+        <h3 align="center">Report</h3>
+        {/* <TableContainer>
+          <Table aria-label="simple table" stickyHeader>
+            <TableHead>
+              <TableRow>
+                <TableCell>URL</TableCell>
+                <TableCell align="right">Status</TableCell>
+                <TableCell align="right">Duration</TableCell>
+                <TableCell align="right">Status Code</TableCell>
+                <TableCell align="right">Message</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {responseData.map((row) => (
+                <TableRow key={row.testDuration}>
+                  <TableCell component="th" scope="row">
+                    {row.url}
+                  </TableCell>
+                  <TableCell align="right">{row.testStatus}</TableCell>
+                  <TableCell align="right">{row.testDuration}</TableCell>
+
+                  <TableCell align="right">
+                    {row.serverResponse.statusCode}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.serverResponse.successMessage}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer> */}
+      </div>
     </Grid>
   );
 }
