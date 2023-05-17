@@ -13,9 +13,12 @@ import PropTypes from "prop-types";
 
 import { regularCardStyle } from "variables/styles";
 
+import getApiData from "../../model/apiData";
+
 const url = "http://localhost:8000/dailymonitor/apis";
 
-const baseUrl = "https://evaai.enginecal.com/";
+const apiData = getApiData();
+
 const apiLinks = [
   "core/v1/bike-intell/checklogin",
   "event/v1/bike-intell/fileupload",
@@ -23,7 +26,7 @@ const apiLinks = [
   "core",
 ];
 
-function processResult(result) {
+function ProcessResult(result) {
   let dataArray = result.body["data"];
 
   dataArray.forEach((value) => {
@@ -38,8 +41,9 @@ function RegularCard(props) {
   const onClickHandler = async () => {
     await fetch(url)
       .then((r) => r.json().then((data) => ({ status: r.status, body: data })))
-      .then((obj) => processResult(obj));
+      .then((obj) => ProcessResult(obj));
   };
+
   return (
     <Card className={classes.card + (plainCard ? " " + classes.cardPlain : "")}>
       <CardHeader
@@ -72,9 +76,10 @@ function RegularCard(props) {
               }}
             >
               Select base urls:
-              {apiLinks.map((apiLink) => (
-                <option>{baseUrl + apiLink}</option>
-              ))}
+              {apiData[0].baseUrl.map((urls) => {
+                // return <option>{baseUrl + apiLink}</option>;
+                return <option>{urls}</option>;
+              })}
             </select>
 
             <Button
@@ -107,4 +112,4 @@ RegularCard.propTypes = {
   content: PropTypes.node,
 };
 
-export default withStyles(regularCardStyle)(RegularCard);
+export default withStyles(regularCardStyle)(RegularCard, ProcessResult);

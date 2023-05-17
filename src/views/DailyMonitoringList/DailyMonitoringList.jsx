@@ -1,52 +1,27 @@
 import { Grid } from "material-ui";
 
-import { RegularCard, Table, ItemGrid } from "components";
+import {
+  RegularCard,
+  Table as CardTable,
+  ItemGrid,
+  ProcessResult,
+} from "components";
 
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
-import { Table as ReportTable } from "@material-ui/core/Table";
+import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import getApiData from "../../model/apiData";
 
-const url = "http://localhost:8000/dailymonitor/apis";
+const apiData = getApiData();
 
-function processResult(result) {
-  let dataArray = result.body["data"];
+const message = () => {};
 
-  dataArray.forEach((value) => {
-    console.log(value);
-  });
-}
-const message = () => {
-  // const [message, setMessage] = useState("");
-  // const [updated, setUpdated] = useState(message);
-  // const handleChange = (event) => {
-  //   setMessage(event.target.value);
-  // };
-  // const handleClick = () => {
-  //   // 👇 "message" stores input field value
-  //   setUpdated(message);
-  // };
-  // return (
-  //   <div>
-  //     <input
-  //       type="text"
-  //       id="message"
-  //       name="message"
-  //       onChange={handleChange}
-  //       value={message}
-  //     />
-  //     <h2>Message: {message}</h2>
-  //     <h2>Updated: {updated}</h2>
-  //     <button onClick={handleClick}>Update</button>
-  //   </div>
-  // );
-};
-const baseUrl = "https://evaai.enginecal.com/";
 const apiLinks = [
   "core/v1/bike-intell/checklogin",
   "event/v1/bike-intell/fileupload",
@@ -61,7 +36,7 @@ function DailyMonitoringList() {
         <RegularCard
           cardTitle="SYSTEM"
           content={
-            <Table
+            <CardTable
               tableHeaderColor="primary"
               tableHead={["API", "Tests", "Status", "Message"]}
               tableData={[
@@ -72,9 +47,9 @@ function DailyMonitoringList() {
                     }}
                   >
                     Select base urls:
-                    {apiLinks.map((apiLink) => (
-                      <option>{apiLink}</option>
-                    ))}
+                    {apiLinks.map((apiLink) => {
+                      return <option>{apiLink}</option>;
+                    })}
                   </select>,
                   <button
                     onClick={(event) => console.log("Run test button clicked")}
@@ -128,37 +103,34 @@ function DailyMonitoringList() {
       </ItemGrid>
       <div>
         <h3 align="center">Report</h3>
-        {/* <TableContainer>
+        <TableContainer>
           <Table aria-label="simple table" stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell>URL</TableCell>
-                <TableCell align="right">Status</TableCell>
-                <TableCell align="right">Duration</TableCell>
-                <TableCell align="right">Status Code</TableCell>
-                <TableCell align="right">Message</TableCell>
+                <TableCell>Application</TableCell>
+                <TableCell align="center">API Name</TableCell>
+                <TableCell align="center">URL</TableCell>
+                <TableCell align="right">Method</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {responseData.map((row) => (
-                <TableRow key={row.testDuration}>
-                  <TableCell component="th" scope="row">
-                    {row.url}
-                  </TableCell>
-                  <TableCell align="right">{row.testStatus}</TableCell>
-                  <TableCell align="right">{row.testDuration}</TableCell>
+            <TableBody>{console.log(apiData)}</TableBody>
 
-                  <TableCell align="right">
-                    {row.serverResponse.statusCode}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.serverResponse.successMessage}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+            {
+              <TableBody>
+                {apiData[0].apis.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {apiData[0].applicationName}
+                    </TableCell>
+                    <TableCell align="center">{row.apiName}</TableCell>
+                    <TableCell align="center">{row.apiLink}</TableCell>
+                    <TableCell align="center">{row.requestMethod}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            }
           </Table>
-        </TableContainer> */}
+        </TableContainer>
       </div>
     </Grid>
   );
