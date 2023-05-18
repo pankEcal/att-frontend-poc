@@ -30,6 +30,14 @@ const apiLinks = [
 ];
 
 function DailyMonitoringList() {
+  const [email, setEmail] = useState("");
+  const [passw, setPassw] = useState("");
+  const [dataInput, setDataInput] = useState("");
+  const submitThis = () => {
+    const info = { email: email, passw: passw };
+    setDataInput([info]);
+  };
+  console.log(dataInput);
   return (
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>
@@ -41,16 +49,52 @@ function DailyMonitoringList() {
               tableHead={["API", "Tests", "Status", "Message"]}
               tableData={[
                 [
-                  <select
-                    onChange={(e) => {
-                      console.log("value: ", e.target.value);
-                    }}
-                  >
-                    Select base urls:
-                    {apiLinks.map((apiLink) => {
-                      return <option>{apiLink}</option>;
-                    })}
-                  </select>,
+                  <div>
+                    <div>
+                      <select
+                        onChange={(e) => {
+                          console.log("value: ", e.target.value);
+                          console.log("changing api's");
+                        }}
+                      >
+                        {apiLinks.map((apiLink) => {
+                          return <option>{apiLink}</option>;
+                        })}
+                      </select>
+
+                      <button onClick={() => console.log("sahgksdjfwdsj")}>
+                        Input
+                      </button>
+                    </div>
+                    <br></br>
+
+                    <div>
+                      <form action="">
+                        <div>
+                          <label htmlFor="email">Email</label>
+                          <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                        </div>
+                        <br />
+                        <div>
+                          <label htmlFor="passw">Password</label>
+                          <input
+                            type="text"
+                            name="passw"
+                            id="passw"
+                            value={passw}
+                            onChange={(e) => setPassw(e.target.value)}
+                          />
+                        </div>
+                        <button type="submit">Login</button>
+                      </form>
+                    </div>
+                  </div>,
                   <button
                     onClick={(event) => console.log("Run test button clicked")}
                   >
@@ -70,31 +114,6 @@ function DailyMonitoringList() {
                   "Pass",
 
                   "Server is Up",
-                ],
-                [
-                  "http://evaaidev.enginecal.com/event",
-                  <button
-                    onClick={(event) => console.log("Run test button clicked")}
-                  >
-                    Run test
-                  </button>,
-                  "Pass",
-
-                  "Server is Up",
-                ],
-                [
-                  <button onClick={message}>
-                    {" "}
-                    http://evaaidev.enginecal.com/event{" "}
-                  </button>,
-
-                  <button
-                    onClick={(event) => console.log("Run test button clicked")}
-                  >
-                    Run test
-                  </button>,
-                  "Pass",
-                  "test passed",
                 ],
               ]}
             />
