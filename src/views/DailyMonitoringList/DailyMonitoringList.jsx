@@ -20,8 +20,6 @@ import getApiData from "../../model/apiData";
 
 const apiData = getApiData();
 
-const message = () => {};
-
 const apiLinks = [
   "core/v1/bike-intell/checklogin",
   "event/v1/bike-intell/fileupload",
@@ -30,14 +28,12 @@ const apiLinks = [
 ];
 
 function DailyMonitoringList() {
-  const [email, setEmail] = useState("");
-  const [passw, setPassw] = useState("");
-  const [dataInput, setDataInput] = useState("");
-  const submitThis = () => {
-    const info = { email: email, passw: passw };
-    setDataInput([info]);
+  const [isInputVisible, setInputVisible] = useState(false);
+
+  const toggleInputVisibility = () => {
+    setInputVisible(!isInputVisible);
   };
-  console.log(dataInput);
+
   return (
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>
@@ -56,43 +52,40 @@ function DailyMonitoringList() {
                           console.log("value: ", e.target.value);
                           console.log("changing api's");
                         }}
+                        style={{
+                          marginRight: "10px",
+                        }}
                       >
                         {apiLinks.map((apiLink) => {
                           return <option>{apiLink}</option>;
                         })}
                       </select>
 
-                      <button onClick={() => console.log("sahgksdjfwdsj")}>
-                        Input
-                      </button>
-                    </div>
-                    <br></br>
-
-                    <div>
-                      <form action="">
+                      <button onClick={toggleInputVisibility}>Input</button>
+                      {isInputVisible && (
                         <div>
-                          <label htmlFor="email">Email</label>
+                          <label htmlFor="inputField">Email:</label>
                           <input
                             type="text"
-                            name="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            style={{
+                              display: "block",
+                              marginTop: "10px",
+                            }}
                           />
                         </div>
-                        <br />
+                      )}
+                      {isInputVisible && (
                         <div>
-                          <label htmlFor="passw">Password</label>
+                          <label htmlFor="inputField">Password:</label>
                           <input
                             type="text"
-                            name="passw"
-                            id="passw"
-                            value={passw}
-                            onChange={(e) => setPassw(e.target.value)}
+                            style={{
+                              display: "block",
+                              marginTop: "10px",
+                            }}
                           />
                         </div>
-                        <button type="submit">Login</button>
-                      </form>
+                      )}
                     </div>
                   </div>,
                   <button
@@ -132,22 +125,19 @@ function DailyMonitoringList() {
                 <TableCell align="right">Method</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>{console.log(apiData)}</TableBody>
 
-            {
-              <TableBody>
-                {apiData[0].apis.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                      {apiData[0].applicationName}
-                    </TableCell>
-                    <TableCell align="center">{row.apiName}</TableCell>
-                    <TableCell align="center">{row.apiLink}</TableCell>
-                    <TableCell align="center">{row.requestMethod}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            }
+            <TableBody>
+              {apiData[0].apis.map((row, index) => (
+                <TableRow key={index}>
+                  <TableCell component="th" scope="row">
+                    {apiData[0].applicationName}
+                  </TableCell>
+                  <TableCell align="center">{row.applicationName}</TableCell>
+                  <TableCell align="center">{row.apiLink}</TableCell>
+                  <TableCell align="center">{row.requestMethod}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           </Table>
         </TableContainer>
       </div>
