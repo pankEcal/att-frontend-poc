@@ -7,7 +7,7 @@ import {
   ProcessResult,
 } from "components";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import axios from "axios";
 
 import Table from "@material-ui/core/Table";
@@ -37,6 +37,8 @@ function DailyMonitoringList() {
   const [username, setUsername] = useState("saurabh.singh@enginecal.com");
   const [password, setPassword] = useState("123456");
 
+  const [loginData, setLoginData] = useState([]);
+
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -52,10 +54,12 @@ function DailyMonitoringList() {
       .then((data) => {
         // Handle the response from the server
         console.log(data);
+        setLoginData(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
         console.error(error);
+        setLoginData(error);
       });
 
     // Reset the input fields
@@ -138,6 +142,7 @@ function DailyMonitoringList() {
                       // marginTop: "10px",
                       // marginBottom: "120px",
                       height: "30px",
+                      width: "80px",
                       color: "white",
                       backgroundColor: "red",
                       border: "none",
@@ -146,20 +151,12 @@ function DailyMonitoringList() {
                   >
                     Run test
                   </button>,
-                  "Pass",
-
-                  "Test passed",
-                ],
-                [
-                  "http://evaaidev.enginecal.com/#/dashboard",
-                  <button
-                    onClick={(event) => console.log("Run test button clicked")}
-                  >
-                    Run test
-                  </button>,
-                  "Pass",
-
-                  "Server is Up",
+                  loginData.success
+                    ? JSON.stringify(loginData.success)
+                    : "watiting for data",
+                  loginData.success || loginData.errorMessage
+                    ? JSON.stringify(loginData)
+                    : "waiting for data",
                 ],
               ]}
             />
