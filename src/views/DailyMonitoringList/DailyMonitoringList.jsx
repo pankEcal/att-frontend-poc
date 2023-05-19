@@ -34,6 +34,35 @@ function DailyMonitoringList() {
     setInputVisible(!isInputVisible);
   };
 
+  const [username, setUsername] = useState("saurabh.singh@enginecal.com");
+  const [password, setPassword] = useState("123456");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    // Perform the login API request using fetch or Axios
+    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/checklogin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ u: username, p: password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+      });
+
+    // Reset the input fields
+    setUsername("");
+    setPassword("");
+  };
+
   return (
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>
@@ -62,34 +91,58 @@ function DailyMonitoringList() {
                       </select>
 
                       <button onClick={toggleInputVisibility}>Input</button>
-                      {isInputVisible && (
-                        <div>
-                          <label htmlFor="inputField">Email:</label>
-                          <input
-                            type="text"
-                            style={{
-                              display: "block",
-                              marginTop: "10px",
-                            }}
-                          />
-                        </div>
-                      )}
-                      {isInputVisible && (
-                        <div>
-                          <label htmlFor="inputField">Password:</label>
-                          <input
-                            type="text"
-                            style={{
-                              display: "block",
-                              marginTop: "10px",
-                            }}
-                          />
-                        </div>
-                      )}
+                      <form onSubmit={handleLogin}>
+                        {isInputVisible && (
+                          <div>
+                            <label htmlFor="inputField">Email:</label>
+                            <input
+                              id="username"
+                              type="text"
+                              name="u"
+                              value={username}
+                              onChange={(e) => {
+                                setUsername(e.target.value);
+                              }}
+                              style={{
+                                display: "block",
+                                marginTop: "10px",
+                              }}
+                            />
+                          </div>
+                        )}
+                        {isInputVisible && (
+                          <div>
+                            <label htmlFor="inputField">Password:</label>
+                            <input
+                              id="password"
+                              type="password"
+                              name="p"
+                              value={password}
+                              onChange={(e) => {
+                                setPassword(e.target.value);
+                              }}
+                              style={{
+                                display: "block",
+                                marginTop: "10px",
+                              }}
+                            />
+                          </div>
+                        )}
+                        <button type="submit">Login</button>
+                      </form>
                     </div>
                   </div>,
                   <button
-                    onClick={(event) => console.log("Run test button clicked")}
+                    onClick={handleLogin}
+                    style={{
+                      // marginTop: "10px",
+                      // marginBottom: "120px",
+                      height: "30px",
+                      color: "white",
+                      backgroundColor: "red",
+                      border: "none",
+                      borderRadius: "4px",
+                    }}
                   >
                     Run test
                   </button>,
@@ -116,13 +169,17 @@ function DailyMonitoringList() {
       <div>
         <h3 align="center">Report</h3>
         <TableContainer>
-          <Table aria-label="simple table" stickyHeader>
+          <Table
+            aria-label="simple table"
+            stickyHeader
+            style={{ width: "1200px" }}
+          >
             <TableHead>
               <TableRow>
                 <TableCell>Application</TableCell>
                 <TableCell align="center">API Name</TableCell>
                 <TableCell align="center">URL</TableCell>
-                <TableCell align="right">Method</TableCell>
+                <TableCell align="center">Method</TableCell>
               </TableRow>
             </TableHead>
 
