@@ -62,6 +62,16 @@ function DailyMonitoringList() {
     setPassword("");
   };
 
+  // Create default API of the select option
+  const [selectedOption, setSelectedOption] = useState(
+    apiData[0].apis[0].apiLink
+  );
+
+  // handle default API of the select option
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   return (
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>
@@ -76,10 +86,12 @@ function DailyMonitoringList() {
                   <div>
                     <div>
                       <select
-                        onChange={(e) => {
-                          console.log("value: ", e.target.value);
-                          console.log("changing api's");
-                        }}
+                        // onChange={(e) => {
+                        //   console.log("value: ", e.target.value);
+                        //   console.log("changing api's");
+                        // }}
+                        value={selectedOption}
+                        onChange={handleOptionChange}
                         style={{
                           marginRight: "10px",
                         }}
