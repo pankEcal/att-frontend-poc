@@ -100,6 +100,59 @@ function DailyMonitoringList() {
                           return <option>{api.apiLink}</option>;
                         })}
                       </select>
+                      {/* Implementation of check login */}
+                      {selectedOption === apiData[0].apis[0].apiLink && (
+                        <form onSubmit={handleLogin}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Email:</label>
+                              <input
+                                id="username"
+                                type="text"
+                                name="u"
+                                value={username}
+                                onChange={(e) => {
+                                  setUsername(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Password:</label>
+                              <input
+                                id="password"
+                                type="password"
+                                name="p"
+                                value={password}
+                                onChange={(e) => {
+                                  setPassword(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {/* <button
+                            type="submit"
+                            style={{
+                              marginTop: "10px",
+                            }}
+                          >
+                            Login
+                          </button> */}
+                        </form>
+                      )}
+                      {/* Implementation of forget password */}
+                      {selectedOption === apiData[0].apis[1].apiLink && (
+                        <div>UI Element 1</div>
+                      )}
 
                       <button
                         onClick={toggleInputVisibility}
@@ -109,7 +162,7 @@ function DailyMonitoringList() {
                       >
                         Input
                       </button>
-                      <form onSubmit={handleLogin}>
+                      {/* <form onSubmit={handleLogin}>
                         {isInputVisible && (
                           <div>
                             <label htmlFor="inputField">Email:</label>
@@ -154,7 +207,7 @@ function DailyMonitoringList() {
                         >
                           Login
                         </button>
-                      </form>
+                      </form> */}
                     </div>
                   </div>,
                   <button
