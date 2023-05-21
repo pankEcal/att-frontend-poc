@@ -20,12 +20,7 @@ import getApiData from "../../model/apiData";
 
 const apiData = getApiData();
 
-const apiLinks = [
-  "core/v1/bike-intell/checklogin",
-  "event/v1/bike-intell/fileupload",
-  "event",
-  "core",
-];
+console.log(apiData[0].apis[0].apiLink);
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -89,12 +84,19 @@ function DailyMonitoringList() {
                           marginRight: "10px",
                         }}
                       >
-                        {apiLinks.map((apiLink) => {
-                          return <option>{apiLink}</option>;
+                        {apiData[0].apis.map((api) => {
+                          return <option>{api.apiLink}</option>;
                         })}
                       </select>
 
-                      <button onClick={toggleInputVisibility}>Input</button>
+                      <button
+                        onClick={toggleInputVisibility}
+                        style={{
+                          marginTop: "10px",
+                        }}
+                      >
+                        Input
+                      </button>
                       <form onSubmit={handleLogin}>
                         {isInputVisible && (
                           <div>
@@ -132,7 +134,14 @@ function DailyMonitoringList() {
                             />
                           </div>
                         )}
-                        <button type="submit">Login</button>
+                        <button
+                          type="submit"
+                          style={{
+                            marginTop: "10px",
+                          }}
+                        >
+                          Login
+                        </button>
                       </form>
                     </div>
                   </div>,
@@ -154,15 +163,26 @@ function DailyMonitoringList() {
                   loginData.success
                     ? JSON.stringify(loginData.success)
                     : "watiting for data",
-                  loginData.success || loginData.errorMessage
-                    ? JSON.stringify(loginData)
-                    : "waiting for data",
+                  <div style={{ alignContent: "center" }}>
+                    {loginData.success || loginData.errorMessage
+                      ? JSON.stringify(loginData)
+                      : "waiting for data"}
+                  </div>,
                 ],
               ]}
             />
           }
         />
       </ItemGrid>
+
+      {loginData && (
+        <div className="loginData">
+          <h3>Test Result</h3>
+          <div>
+            <samp>{JSON.stringify(loginData)}</samp>
+          </div>
+        </div>
+      )}
       <div>
         <h3 align="center">Report</h3>
         <TableContainer>
