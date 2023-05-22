@@ -31,9 +31,7 @@ function DailyMonitoringList() {
 
   const [username, setUsername] = useState("saurabh.singh@enginecal.com");
   const [password, setPassword] = useState("123456");
-
   const [loginData, setLoginData] = useState([]);
-
   const handleLogin = (event) => {
     event.preventDefault();
 
@@ -64,14 +62,12 @@ function DailyMonitoringList() {
 
   const [forgetEmail, setForgetEmail] = useState("test@enginecal.com");
   const [forgetPassword, setForgetPassword] = useState("123@Ecal");
-
   const [forgetPasswordData, setForgetPasswordData] = useState([]);
-
   const handleForgetPassword = (event) => {
     event.preventDefault();
 
     // Perform the login API request using fetch or Axios
-    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/forgetpass", {
+    fetch("https://evaai.enginecal.com/core/v1/bike-intell/forgetpass", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,6 +89,11 @@ function DailyMonitoringList() {
     // Reset the input fields
     setForgetEmail("");
     setForgetPassword("");
+  };
+
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    console.log("The link was clicked.");
   };
 
   // Create default API of the select option
@@ -227,7 +228,7 @@ function DailyMonitoringList() {
                               marginTop: "10px",
                             }}
                           >
-                            Login
+                            Forget Password
                           </button>
                         </form>
                       )}
@@ -240,52 +241,6 @@ function DailyMonitoringList() {
                       >
                         Input
                       </button>
-                      {/* <form onSubmit={handleLogin}>
-                        {isInputVisible && (
-                          <div>
-                            <label htmlFor="inputField">Email:</label>
-                            <input
-                              id="username"
-                              type="text"
-                              name="u"
-                              value={username}
-                              onChange={(e) => {
-                                setUsername(e.target.value);
-                              }}
-                              style={{
-                                display: "block",
-                                marginTop: "10px",
-                              }}
-                            />
-                          </div>
-                        )}
-                        {isInputVisible && (
-                          <div>
-                            <label htmlFor="inputField">Password:</label>
-                            <input
-                              id="password"
-                              type="password"
-                              name="p"
-                              value={password}
-                              onChange={(e) => {
-                                setPassword(e.target.value);
-                              }}
-                              style={{
-                                display: "block",
-                                marginTop: "10px",
-                              }}
-                            />
-                          </div>
-                        )}
-                        <button
-                          type="submit"
-                          style={{
-                            marginTop: "10px",
-                          }}
-                        >
-                          Login
-                        </button>
-                      </form> */}
                     </div>
                   </div>,
                   <button
@@ -307,6 +262,7 @@ function DailyMonitoringList() {
                     {loginData.success || loginData.errorMessage
                       ? JSON.stringify(loginData.success)
                       : "watiting for data"}
+                    {console.log(forgetPasswordData.message)}
                   </div>,
                   <div style={{ alignContent: "center" }}>
                     {loginData.success || loginData.errorMessage
