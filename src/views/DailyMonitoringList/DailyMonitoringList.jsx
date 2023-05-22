@@ -62,6 +62,39 @@ function DailyMonitoringList() {
     setPassword("");
   };
 
+  const [forgetEmail, setForgetEmail] = useState("test@enginecal.com");
+  const [forgetPassword, setForgetPassword] = useState("123@Ecal");
+
+  const [forgetPasswordData, setForgetPasswordData] = useState([]);
+
+  const handleForgetPassword = (event) => {
+    event.preventDefault();
+
+    // Perform the login API request using fetch or Axios
+    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/forgetpass", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: forgetEmail, password: forgetPassword }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+        setForgetPasswordData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+        setForgetPasswordData(error);
+      });
+
+    // Reset the input fields
+    setForgetEmail("");
+    setForgetPassword("");
+  };
+
   // Create default API of the select option
   const [selectedOption, setSelectedOption] = useState(
     apiData[0].apis[0].apiLink
@@ -151,7 +184,52 @@ function DailyMonitoringList() {
                       )}
                       {/* Implementation of forget password */}
                       {selectedOption === apiData[0].apis[1].apiLink && (
-                        <div>UI Element 1</div>
+                        <form onSubmit={handleForgetPassword}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Email:</label>
+                              <input
+                                id="forgetEmail"
+                                type="text"
+                                name="email"
+                                value={forgetEmail}
+                                onChange={(e) => {
+                                  setForgetEmail(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Password:</label>
+                              <input
+                                id="forgetPassword"
+                                type="password"
+                                name="password"
+                                value={forgetPassword}
+                                onChange={(e) => {
+                                  setForgetPassword(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          <button
+                            type="submit"
+                            style={{
+                              marginTop: "10px",
+                            }}
+                          >
+                            Login
+                          </button>
+                        </form>
                       )}
 
                       <button
@@ -225,9 +303,11 @@ function DailyMonitoringList() {
                   >
                     Run test
                   </button>,
-                  loginData.success
-                    ? JSON.stringify(loginData.success)
-                    : "watiting for data",
+                  <div style={{ alignContent: "center" }}>
+                    {loginData.success || loginData.errorMessage
+                      ? JSON.stringify(loginData.success)
+                      : "watiting for data"}
+                  </div>,
                   <div style={{ alignContent: "center" }}>
                     {loginData.success || loginData.errorMessage
                       ? JSON.stringify(loginData)
