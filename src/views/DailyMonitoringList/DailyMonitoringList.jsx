@@ -1,4 +1,4 @@
-import { Grid } from "material-ui";
+import { Card, Grid } from "material-ui";
 
 import {
   RegularCard,
@@ -32,6 +32,10 @@ function DailyMonitoringList() {
   const [username, setUsername] = useState("saurabh.singh@enginecal.com");
   const [password, setPassword] = useState("123456");
   const [loginData, setLoginData] = useState([]);
+  const [currentApi, setCurrentApi] = useState(
+    "core/v1/bike-intell/checklogin"
+  );
+  const [respData, setResponseData] = useState([]);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -48,17 +52,24 @@ function DailyMonitoringList() {
       .then((data) => {
         // Handle the response from the server
         console.log(data);
-        setLoginData(data);
+        let resp = [];
+        resp["status"] = data["success"];
+        resp["message"] = JSON.stringify(data);
+        setResponseData(resp);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
-        console.error(error);
-        setLoginData(error);
+        // console.error(error);
+        // setLoginData(error);
+        let resp = [];
+        resp["status"] = false;
+        resp["message"] = JSON.stringify(error);
+        setResponseData(resp);
       });
 
     // Reset the input fields
-    setUsername("");
-    setPassword("");
+    // setUsername("");
+    // setPassword("");
   };
 
   const [forgetEmail, setForgetEmail] = useState("test@enginecal.com");
@@ -80,16 +91,23 @@ function DailyMonitoringList() {
         // Handle the response from the server
         console.log(data);
         setForgetPasswordData(data);
+        var resp = [];
+        resp["status"] = data["status"];
+        resp["message"] = JSON.stringify(data);
+        setResponseData(resp);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
         console.error(error);
         setForgetPasswordData(error);
+        var resp = [];
+        resp["status"] = false;
+        resp["message"] = JSON.stringify(error);
       });
 
     // Reset the input fields
-    setForgetEmail("");
-    setForgetPassword("");
+    // setForgetEmail("");
+    // setForgetPassword("");
   };
 
   const handleOnClick = (e) => {
@@ -97,6 +115,18 @@ function DailyMonitoringList() {
     console.log("The link was clicked.");
   };
 
+  const handleApi = (event) => {
+    event.preventDefault();
+    switch (currentApi) {
+      case "core/v1/bike-intell/checklogin":
+        handleLogin(event);
+        console.log("handle login :" + handleLogin);
+        break;
+      case "core/v1/bike-intell/forgetpass":
+        handleForgetPassword(event);
+        break;
+    }
+  };
   // Create default API of the select option
   const [selectedOption, setSelectedOption] = useState(
     apiData[0].apis[0].apiLink
@@ -104,7 +134,9 @@ function DailyMonitoringList() {
 
   // handle default API of the select option
   const handleOptionChange = (event) => {
+    console.log("event.trgt = " + event.target.value);
     setSelectedOption(event.target.value);
+    setCurrentApi(event.target.value);
   };
 
   return (
@@ -245,7 +277,7 @@ function DailyMonitoringList() {
                     </div>
                   </div>,
                   <button
-                    onClick={handleLogin}
+                    onClick={handleApi}
                     style={{
                       // marginTop: "10px",
                       // marginBottom: "120px",
@@ -260,15 +292,16 @@ function DailyMonitoringList() {
                     Run test
                   </button>,
                   <div style={{ alignContent: "center" }}>
-                    {loginData.success || loginData.errorMessage
-                      ? JSON.stringify(loginData.success)
-                      : "watiting for data"}
-                    {console.log(forgetPasswordData.message)}
+                    {respData.status == undefined
+                      ? "Waiting for data"
+                      : respData.status == true
+                      ? "Success"
+                      : "Failed"}
                   </div>,
                   <div style={{ alignContent: "center" }}>
-                    {loginData.success || loginData.errorMessage
-                      ? JSON.stringify(loginData)
-                      : "waiting for data"}
+                    {respData.status == undefined
+                      ? "Waiting for data"
+                      : JSON.stringify(respData.message)}
                   </div>,
                 ],
               ]}
