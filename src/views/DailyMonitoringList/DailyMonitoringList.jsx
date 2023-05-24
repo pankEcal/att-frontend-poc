@@ -265,6 +265,49 @@ function DailyMonitoringList() {
                           </button>
                         </form>
                       )}
+                      {/* Implementation of check login */}
+                      {selectedOption === apiData[0].apis[3].apiLink && (
+                        <form>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">A Code:</label>
+                              <input
+                                id="username"
+                                type="text"
+                                name="u"
+                                value={username}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Mac:</label>
+                              <input
+                                id="username"
+                                type="text"
+                                name="p"
+                                value={password}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {/* <button
+                            type="submit"
+                            style={{
+                              marginTop: "10px",
+                            }}
+                          >
+                            Login
+                          </button> */}
+                        </form>
+                      )}
 
                       <button
                         onClick={toggleInputVisibility}
@@ -292,16 +335,16 @@ function DailyMonitoringList() {
                     Run test
                   </button>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status == undefined
+                    {respData.status === undefined
                       ? "Waiting for data"
-                      : respData.status == true
+                      : respData.status === true
                       ? "Success"
                       : "Failed"}
                   </div>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status == undefined
+                    {respData.status === undefined
                       ? "Waiting for data"
-                      : JSON.stringify(respData.message)}
+                      : respData.message}
                   </div>,
                 ],
               ]}
@@ -310,14 +353,14 @@ function DailyMonitoringList() {
         />
       </ItemGrid>
 
-      {loginData && (
+      {/* {loginData && (
         <div className="loginData">
           <h3>Test Result</h3>
           <div>
             <samp>{JSON.stringify(loginData)}</samp>
           </div>
         </div>
-      )}
+      )} */}
       <div>
         <h3 align="center">Report</h3>
         <TableContainer>
