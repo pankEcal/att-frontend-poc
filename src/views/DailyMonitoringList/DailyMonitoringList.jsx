@@ -39,14 +39,17 @@ function DailyMonitoringList() {
     setInputVisible(!isInputVisible);
   };
 
-  const handleLogin = (event) => {
+  const handleRunTest = (event) => {
     event.preventDefault();
 
     const payloadData = {
       baseUrl: "https://evaai.enginecal.com/",
       apiLink: "core/v1/bike-intell/checklogin",
       requestMethod: "POST",
-      requestPrams: { u: username, p: password },
+      requestParams: {
+        u: username,
+        p: password,
+      },
     };
 
     // Perform the login API request using fetch or Axios
@@ -61,6 +64,7 @@ function DailyMonitoringList() {
       .then((data) => {
         // Handle the response from the server
         setResponseData(data);
+        console.log(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -71,15 +75,6 @@ function DailyMonitoringList() {
     // Reset the input fields
     // setUsername("");
     // setPassword("");
-  };
-
-  const handleApi = (event) => {
-    event.preventDefault();
-    switch (currentApi) {
-      case "core/v1/bike-intell/checklogin":
-        handleLogin(event);
-        break;
-    }
   };
 
   // handle default API of the select option
@@ -115,7 +110,7 @@ function DailyMonitoringList() {
                       </select>
                       {/* Implementation of check login */}
                       {selectedOption === apiData[0].apis[0].apiLink && (
-                        <form onSubmit={handleLogin}>
+                        <form onSubmit={handleRunTest}>
                           {isInputVisible && (
                             <div>
                               <label htmlFor="inputField">Email:</label>
@@ -174,7 +169,7 @@ function DailyMonitoringList() {
                     </div>
                   </div>,
                   <button
-                    onClick={handleApi}
+                    onClick={handleRunTest}
                     style={{
                       height: "30px",
                       width: "80px",
@@ -187,16 +182,17 @@ function DailyMonitoringList() {
                     Run test
                   </button>,
                   <div style={{ alignContent: "center" }}>
-                    {responseData.status === undefined
+                    {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : responseData.status === true
-                      ? "Success"
-                      : "Failed"}
+                      : responseData.testResult.success === true
+                      ? "passed"
+                      : "failed"}
                   </div>,
                   <div style={{ alignContent: "center" }}>
-                    {responseData.status === undefined
+                    {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : responseData.message}
+                      : responseData.testResult.message ||
+                        "missing message in server response"}
                   </div>,
                 ],
               ]}
@@ -206,11 +202,11 @@ function DailyMonitoringList() {
       </ItemGrid>
 
       {/* TODO: Implement the result preview screen  */}
-      {/* {loginData && (
+      {/* {responseData && (
         <div className="loginData">
           <h3>Test Result</h3>
           <div>
-            <samp>{JSON.stringify(loginData)}</samp>
+            <samp>{JSON.stringify(responseData)}</samp>
           </div>
         </div>
       )} */}
