@@ -20,51 +20,52 @@ import getApiData from "../../model/apiData";
 
 const apiData = getApiData();
 
-console.log(apiData[0].apis[0].apiLink);
-
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
+  const [username, setUsername] = useState("saurabh.singh@enginecal.com");
+  const [password, setPassword] = useState("123456");
+  const [currentApi, setCurrentApi] = useState(
+    "core/v1/bike-intell/checklogin"
+  );
+  const [responseData, setResponseData] = useState({});
+  // Create default API of the select option
+  const [selectedOption, setSelectedOption] = useState(
+    apiData[0].apis[0].apiLink
+  );
+
+  const BACKEND_BASE_URL = "http://localhost:8000/";
 
   const toggleInputVisibility = () => {
     setInputVisible(!isInputVisible);
   };
 
-  const [username, setUsername] = useState("saurabh.singh@enginecal.com");
-  const [password, setPassword] = useState("123456");
-  const [loginData, setLoginData] = useState([]);
-  const [currentApi, setCurrentApi] = useState(
-    "core/v1/bike-intell/checklogin"
-  );
-  const [respData, setResponseData] = useState([]);
-
   const handleLogin = (event) => {
     event.preventDefault();
 
+    const payloadData = {
+      baseUrl: "https://evaai.enginecal.com/",
+      apiLink: "core/v1/bike-intell/checklogin",
+      requestMethod: "POST",
+      requestPrams: { u: username, p: password },
+    };
+
     // Perform the login API request using fetch or Axios
-    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/checklogin", {
+    fetch(BACKEND_BASE_URL + "v2/test", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ u: username, p: password }),
+      body: JSON.stringify(payloadData),
     })
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server
-        console.log(data);
-        let resp = [];
-        resp["status"] = data["success"];
-        resp["message"] = JSON.stringify(data);
-        setResponseData(resp);
+        setResponseData(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
-        // console.error(error);
-        // setLoginData(error);
-        let resp = [];
-        resp["status"] = false;
-        resp["message"] = JSON.stringify(error);
-        setResponseData(resp);
+        // TODO: handle error
+        console.log(error);
       });
 
     // Reset the input fields
@@ -72,69 +73,18 @@ function DailyMonitoringList() {
     // setPassword("");
   };
 
-  const [forgetEmail, setForgetEmail] = useState("test@enginecal.com");
-  const [forgetPassword, setForgetPassword] = useState("123@Ecal");
-  const [forgetPasswordData, setForgetPasswordData] = useState([]);
-  const handleForgetPassword = (event) => {
-    event.preventDefault();
-
-    // Perform the login API request using fetch or Axios
-    fetch("https://evaai.enginecal.com/core/v1/bike-intell/forgetpass", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: forgetEmail, password: forgetPassword }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from the server
-        console.log(data);
-        setForgetPasswordData(data);
-        var resp = [];
-        resp["status"] = data["status"];
-        resp["message"] = JSON.stringify(data);
-        setResponseData(resp);
-      })
-      .catch((error) => {
-        // Handle any errors that occurred during the request
-        console.error(error);
-        setForgetPasswordData(error);
-        var resp = [];
-        resp["status"] = false;
-        resp["message"] = JSON.stringify(error);
-      });
-
-    // Reset the input fields
-    // setForgetEmail("");
-    // setForgetPassword("");
-  };
-
-  const handleOnClick = (e) => {
-    e.preventDefault();
-    console.log("The link was clicked.");
-  };
-
   const handleApi = (event) => {
     event.preventDefault();
     switch (currentApi) {
       case "core/v1/bike-intell/checklogin":
         handleLogin(event);
-        console.log("handle login :" + handleLogin);
-        break;
-      case "core/v1/bike-intell/forgetpass":
-        handleForgetPassword(event);
         break;
     }
   };
-  // Create default API of the select option
-  const [selectedOption, setSelectedOption] = useState(
-    apiData[0].apis[0].apiLink
-  );
 
   // handle default API of the select option
   const handleOptionChange = (event) => {
-    console.log("event.trgt = " + event.target.value);
+    console.log("selected apiLink: " + event.target.value);
     setSelectedOption(event.target.value);
     setCurrentApi(event.target.value);
   };
@@ -153,10 +103,6 @@ function DailyMonitoringList() {
                   <div>
                     <div>
                       <select
-                        // onChange={(e) => {
-                        //   console.log("value: ", e.target.value);
-                        //   console.log("changing api's");
-                        // }}
                         value={selectedOption}
                         onChange={handleOptionChange}
                         style={{
@@ -216,98 +162,6 @@ function DailyMonitoringList() {
                           </button> */}
                         </form>
                       )}
-                      {/* Implementation of forget password */}
-                      {selectedOption === apiData[0].apis[1].apiLink && (
-                        <form onSubmit={handleForgetPassword}>
-                          {isInputVisible && (
-                            <div>
-                              <label htmlFor="inputField">Email:</label>
-                              <input
-                                id="forgetEmail"
-                                type="text"
-                                name="email"
-                                value={forgetEmail}
-                                onChange={(e) => {
-                                  setForgetEmail(e.target.value);
-                                }}
-                                style={{
-                                  display: "block",
-                                  marginTop: "10px",
-                                }}
-                              />
-                            </div>
-                          )}
-                          {isInputVisible && (
-                            <div>
-                              <label htmlFor="inputField">Password:</label>
-                              <input
-                                id="forgetPassword"
-                                type="password"
-                                name="password"
-                                value={forgetPassword}
-                                onChange={(e) => {
-                                  setForgetPassword(e.target.value);
-                                }}
-                                style={{
-                                  display: "block",
-                                  marginTop: "10px",
-                                }}
-                              />
-                            </div>
-                          )}
-                          <button
-                            type="submit"
-                            style={{
-                              marginTop: "10px",
-                            }}
-                          >
-                            Forget Password
-                          </button>
-                        </form>
-                      )}
-                      {/* Implementation of check login */}
-                      {selectedOption === apiData[0].apis[3].apiLink && (
-                        <form>
-                          {isInputVisible && (
-                            <div>
-                              <label htmlFor="inputField">A Code:</label>
-                              <input
-                                id="username"
-                                type="text"
-                                name="u"
-                                value={username}
-                                style={{
-                                  display: "block",
-                                  marginTop: "10px",
-                                }}
-                              />
-                            </div>
-                          )}
-                          {isInputVisible && (
-                            <div>
-                              <label htmlFor="inputField">Mac:</label>
-                              <input
-                                id="username"
-                                type="text"
-                                name="p"
-                                value={password}
-                                style={{
-                                  display: "block",
-                                  marginTop: "10px",
-                                }}
-                              />
-                            </div>
-                          )}
-                          {/* <button
-                            type="submit"
-                            style={{
-                              marginTop: "10px",
-                            }}
-                          >
-                            Login
-                          </button> */}
-                        </form>
-                      )}
 
                       <button
                         onClick={toggleInputVisibility}
@@ -322,8 +176,6 @@ function DailyMonitoringList() {
                   <button
                     onClick={handleApi}
                     style={{
-                      // marginTop: "10px",
-                      // marginBottom: "120px",
                       height: "30px",
                       width: "80px",
                       color: "white",
@@ -335,16 +187,16 @@ function DailyMonitoringList() {
                     Run test
                   </button>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status === undefined
+                    {responseData.status === undefined
                       ? "Waiting for data"
-                      : respData.status === true
+                      : responseData.status === true
                       ? "Success"
                       : "Failed"}
                   </div>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status === undefined
+                    {responseData.status === undefined
                       ? "Waiting for data"
-                      : respData.message}
+                      : responseData.message}
                   </div>,
                 ],
               ]}
@@ -353,6 +205,7 @@ function DailyMonitoringList() {
         />
       </ItemGrid>
 
+      {/* TODO: Implement the result preview screen  */}
       {/* {loginData && (
         <div className="loginData">
           <h3>Test Result</h3>
