@@ -22,14 +22,15 @@ const apiData = getApiData();
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
-  const [username, setUsername] = useState("saurabh.singh@enginecal.com");
-  const [password, setPassword] = useState("123456");
+  const [username, setUsername] = useState(apiData[0].apis[0].requestParams.u);
+  const [password, setPassword] = useState(apiData[0].apis[0].requestParams.p);
+  // console.log(apiData[0].apis[0].requestParams);
   const [currentApi, setCurrentApi] = useState(
     "core/v1/bike-intell/checklogin"
   );
   const [responseData, setResponseData] = useState({});
   // Create default API of the select option
-  const [selectedOption, setSelectedOption] = useState(
+  const [selectedApiLink, setSelectedApiLink] = useState(
     apiData[0].apis[0].apiLink
   );
 
@@ -44,7 +45,10 @@ function DailyMonitoringList() {
 
     const payloadData = {
       baseUrl: "https://evaai.enginecal.com/",
-      apiLink: "core/v1/bike-intell/checklogin",
+      // apiLink: "core/v1/bike-intell/checklogin",
+      apiLink: apiData[0].apis.find((api) => {
+        console.log("list of api's: " + api.apiLink);
+      }),
       requestMethod: "POST",
       requestParams: {
         u: username,
@@ -69,6 +73,7 @@ function DailyMonitoringList() {
       .catch((error) => {
         // Handle any errors that occurred during the request
         // TODO: handle error
+        setResponseData(error);
         console.log(error);
       });
 
@@ -80,7 +85,7 @@ function DailyMonitoringList() {
   // handle default API of the select option
   const handleOptionChange = (event) => {
     console.log("selected apiLink: " + event.target.value);
-    setSelectedOption(event.target.value);
+    setSelectedApiLink(event.target.value);
     setCurrentApi(event.target.value);
   };
 
@@ -98,7 +103,7 @@ function DailyMonitoringList() {
                   <div>
                     <div>
                       <select
-                        value={selectedOption}
+                        value={selectedApiLink}
                         onChange={handleOptionChange}
                         style={{
                           marginRight: "10px",
@@ -109,7 +114,7 @@ function DailyMonitoringList() {
                         })}
                       </select>
                       {/* Implementation of check login */}
-                      {selectedOption === apiData[0].apis[0].apiLink && (
+                      {selectedApiLink === apiData[0].apis[0].apiLink && (
                         <form onSubmit={handleRunTest}>
                           {isInputVisible && (
                             <div>
