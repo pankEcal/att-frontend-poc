@@ -43,12 +43,13 @@ function DailyMonitoringList() {
   const handleRunTest = (event) => {
     event.preventDefault();
 
+    const payloadApiLink = apiData[0].apis.find(
+      (api) => api.apiLink === selectedApiLink
+    );
+
     const payloadData = {
       baseUrl: "https://evaai.enginecal.com/",
-      // apiLink: "core/v1/bike-intell/checklogin",
-      apiLink: apiData[0].apis.find((api) => {
-        console.log("list of api's: " + api.apiLink);
-      }),
+      apiLink: payloadApiLink.apiLink,
       requestMethod: "POST",
       requestParams: {
         u: username,
