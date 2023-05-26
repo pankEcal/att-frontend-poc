@@ -24,10 +24,6 @@ function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
   const [username, setUsername] = useState(apiData[0].apis[0].requestParams.u);
   const [password, setPassword] = useState(apiData[0].apis[0].requestParams.p);
-  // console.log(apiData[0].apis[0].requestParams);
-  const [currentApi, setCurrentApi] = useState(
-    "core/v1/bike-intell/checklogin"
-  );
   const [responseData, setResponseData] = useState({});
   // Create default API of the select option
   const [selectedApiLink, setSelectedApiLink] = useState(
@@ -87,7 +83,6 @@ function DailyMonitoringList() {
   const handleOptionChange = (event) => {
     console.log("selected apiLink: " + event.target.value);
     setSelectedApiLink(event.target.value);
-    setCurrentApi(event.target.value);
   };
 
   return (
