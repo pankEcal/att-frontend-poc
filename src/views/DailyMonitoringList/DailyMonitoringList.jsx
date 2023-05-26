@@ -39,18 +39,15 @@ function DailyMonitoringList() {
   const handleRunTest = (event) => {
     event.preventDefault();
 
-    const payloadApiLink = apiData[0].apis.find(
+    const matchingApiLink = apiData[0].apis.find(
       (api) => api.apiLink === selectedApiLink
     );
 
     const payloadData = {
       baseUrl: "https://evaai.enginecal.com/",
-      apiLink: payloadApiLink.apiLink,
-      requestMethod: "POST",
-      requestParams: {
-        u: username,
-        p: password,
-      },
+      apiLink: matchingApiLink.apiLink,
+      requestMethod: matchingApiLink.requestMethod,
+      requestParams: matchingApiLink.requestParams,
     };
 
     // Perform the login API request using fetch or Axios
