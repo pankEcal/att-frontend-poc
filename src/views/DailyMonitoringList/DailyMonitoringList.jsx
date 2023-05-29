@@ -103,9 +103,54 @@ function DailyMonitoringList() {
       });
   };
 
-  const handleOnClick = (e) => {
-    e.preventDefault();
-    console.log("The link was clicked.");
+  const [deviceID, setDeviceID] = useState("50000411");
+  const [profileName, setProfileName] = useState("Rahul");
+  const [profilePassword, setProfilePassword] = useState("1234ec");
+  const [profileEmail, setProfileEmail] = useState("somewhere@example.com");
+  const [profileMobileNo, setProfileMobileNo] = useState("+91 9876543210");
+  const [profileEmergencyNo1, setProfileEmergencyNo1] = "+91 1234567890";
+  const [profileEmergencyNo2, setProfileEmergencyNo2] = "+91 1234567890";
+
+  const handleNewProfile = (event) => {
+    event.preventDefault();
+
+    // Perform the New Profile API request using fetch or Axios
+    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          deviceid: deviceID,
+          name: profileName,
+          password: profilePassword,
+          email: profileEmail,
+          mobile: profileMobileNo,
+          emergency_no1: profileEmergencyNo1,
+          emergency_no2: profileEmergencyNo2,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        let resp = [];
+        resp["status"] = data["success"];
+        resp["message"] = JSON.stringify(data);
+        setResponseData(resp);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        let resp = [];
+        resp["status"] = false;
+        resp["message"] = JSON.stringify(error);
+        setResponseData(resp);
+      });
   };
 
   const handleApi = (event) => {
@@ -113,10 +158,12 @@ function DailyMonitoringList() {
     switch (currentApi) {
       case "core/v1/bike-intell/checklogin":
         handleLogin(event);
-        console.log("handle login :" + handleLogin);
         break;
       case "core/v1/bike-intell/forgetpass":
         handleForgetPassword(event);
+        break;
+      case "core/v1/bike-intell/profile":
+        handleNewProfile(event);
         break;
     }
   };
@@ -228,6 +275,142 @@ function DailyMonitoringList() {
                                 value={forgetPassword}
                                 onChange={(e) => {
                                   setForgetPassword(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of new profile registration */}
+                      {selectedOption === apiData[0].apis[2].apiLink && (
+                        <form onSubmit={handleNewProfile}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Device ID:</label>
+                              <input
+                                id="deviceid"
+                                type="text"
+                                name="deviceid"
+                                value={deviceID}
+                                onChange={(e) => {
+                                  setDeviceID(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Name:</label>
+                              <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                value={profileName}
+                                onChange={(e) => {
+                                  setProfileName(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Email:</label>
+                              <input
+                                id="email"
+                                type="text"
+                                name="email"
+                                value={profileEmail}
+                                onChange={(e) => {
+                                  setProfileEmail(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Set Password:</label>
+                              <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={profilePassword}
+                                onChange={(e) => {
+                                  setProfilePassword(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Mobile Number:</label>
+                              <input
+                                id="mobileno"
+                                type="text"
+                                name="mobile"
+                                value={profileMobileNo}
+                                onChange={(e) => {
+                                  setProfileMobileNo(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                Emergency Number 1:
+                              </label>
+                              <input
+                                id="eno1"
+                                type="text"
+                                name="emergency_no1"
+                                value={profileEmergencyNo1}
+                                onChange={(e) => {
+                                  setProfileEmergencyNo1(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                Emergency Number 2:
+                              </label>
+                              <input
+                                id="eno2"
+                                type="text"
+                                name="emergency_no2"
+                                value={profileEmergencyNo1}
+                                onChange={(e) => {
+                                  setProfileEmergencyNo2(e.target.value);
                                 }}
                                 style={{
                                   display: "block",
