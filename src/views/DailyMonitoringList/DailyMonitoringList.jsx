@@ -31,7 +31,7 @@ function DailyMonitoringList() {
 
   const [username, setUsername] = useState("saurabh.singh@enginecal.com");
   const [password, setPassword] = useState("123456");
-  const [loginData, setLoginData] = useState([]);
+
   const [currentApi, setCurrentApi] = useState(
     "core/v1/bike-intell/checklogin"
   );
@@ -59,26 +59,22 @@ function DailyMonitoringList() {
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
-        // console.error(error);
-        // setLoginData(error);
+        console.error(error);
+
         let resp = [];
         resp["status"] = false;
         resp["message"] = JSON.stringify(error);
         setResponseData(resp);
       });
-
-    // Reset the input fields
-    // setUsername("");
-    // setPassword("");
   };
 
   const [forgetEmail, setForgetEmail] = useState("test@enginecal.com");
   const [forgetPassword, setForgetPassword] = useState("123@Ecal");
-  const [forgetPasswordData, setForgetPasswordData] = useState([]);
+
   const handleForgetPassword = (event) => {
     event.preventDefault();
 
-    // Perform the login API request using fetch or Axios
+    // Perform the forgot API request using fetch or Axios
     fetch("https://evaai.enginecal.com/core/v1/bike-intell/forgetpass", {
       method: "POST",
       headers: {
@@ -90,8 +86,8 @@ function DailyMonitoringList() {
       .then((data) => {
         // Handle the response from the server
         console.log(data);
-        setForgetPasswordData(data);
-        var resp = [];
+
+        let resp = [];
         resp["status"] = data["status"];
         resp["message"] = JSON.stringify(data);
         setResponseData(resp);
@@ -99,15 +95,12 @@ function DailyMonitoringList() {
       .catch((error) => {
         // Handle any errors that occurred during the request
         console.error(error);
-        setForgetPasswordData(error);
-        var resp = [];
+
+        let resp = [];
         resp["status"] = false;
         resp["message"] = JSON.stringify(error);
+        setResponseData(resp);
       });
-
-    // Reset the input fields
-    // setForgetEmail("");
-    // setForgetPassword("");
   };
 
   const handleOnClick = (e) => {
@@ -153,10 +146,6 @@ function DailyMonitoringList() {
                   <div>
                     <div>
                       <select
-                        // onChange={(e) => {
-                        //   console.log("value: ", e.target.value);
-                        //   console.log("changing api's");
-                        // }}
                         value={selectedOption}
                         onChange={handleOptionChange}
                         style={{
@@ -206,14 +195,6 @@ function DailyMonitoringList() {
                               />
                             </div>
                           )}
-                          {/* <button
-                            type="submit"
-                            style={{
-                              marginTop: "10px",
-                            }}
-                          >
-                            Login
-                          </button> */}
                         </form>
                       )}
                       {/* Implementation of forget password */}
@@ -255,14 +236,6 @@ function DailyMonitoringList() {
                               />
                             </div>
                           )}
-                          <button
-                            type="submit"
-                            style={{
-                              marginTop: "10px",
-                            }}
-                          >
-                            Forget Password
-                          </button>
                         </form>
                       )}
 
@@ -279,8 +252,6 @@ function DailyMonitoringList() {
                   <button
                     onClick={handleApi}
                     style={{
-                      // marginTop: "10px",
-                      // marginBottom: "120px",
                       height: "30px",
                       width: "80px",
                       color: "white",
@@ -292,14 +263,14 @@ function DailyMonitoringList() {
                     Run test
                   </button>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status == undefined
+                    {respData.status === undefined
                       ? "Waiting for data"
-                      : respData.status == true
+                      : respData.status === true
                       ? "Success"
                       : "Failed"}
                   </div>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status == undefined
+                    {respData.status === undefined
                       ? "Waiting for data"
                       : respData.message}
                   </div>,
