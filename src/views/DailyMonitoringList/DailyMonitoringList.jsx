@@ -301,7 +301,7 @@ function DailyMonitoringList() {
                   <div style={{ alignContent: "center" }}>
                     {respData.status == undefined
                       ? "Waiting for data"
-                      : JSON.stringify(respData.message)}
+                      : respData.message}
                   </div>,
                 ],
               ]}
@@ -310,14 +310,6 @@ function DailyMonitoringList() {
         />
       </ItemGrid>
 
-      {loginData && (
-        <div className="loginData">
-          <h3>Test Result</h3>
-          <div>
-            <samp>{JSON.stringify(loginData)}</samp>
-          </div>
-        </div>
-      )}
       <div>
         <h3 align="center">Report</h3>
         <TableContainer>
