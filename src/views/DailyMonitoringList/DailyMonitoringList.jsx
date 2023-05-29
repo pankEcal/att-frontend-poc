@@ -18,17 +18,23 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import getApiData from "../../model/apiData";
 
-const apiData = getApiData();
+let apiData = getApiData();
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
-  const [username, setUsername] = useState(apiData[0].apis[0].requestParams.u);
-  const [password, setPassword] = useState(apiData[0].apis[0].requestParams.p);
+
+  const [username, setUsername] = useState("saurabh.singh@enginecal.com");
+  const [password, setPassword] = useState("123456");
   const [responseData, setResponseData] = useState({});
   // Create default API of the select option
   const [selectedApiLink, setSelectedApiLink] = useState(
     apiData[0].apis[0].apiLink
   );
+
+  const len = apiData[0].apis.map((api) => {
+    console.log(api.requestParams.length);
+  });
+  console.log(len);
 
   const BACKEND_BASE_URL = "http://localhost:8000/";
 
@@ -42,6 +48,8 @@ function DailyMonitoringList() {
     const matchingApiLink = apiData[0].apis.find(
       (api) => api.apiLink === selectedApiLink
     );
+
+    const inputRequestParams = apiData[0].apis;
 
     const payloadData = {
       baseUrl: "https://evaai.enginecal.com/",
@@ -209,7 +217,7 @@ function DailyMonitoringList() {
         </div>
       )} */}
       <div>
-        <h3 align="center">Report</h3>
+        <h3 align="center">BikeIntell API</h3>
         <TableContainer>
           <Table
             aria-label="simple table"
