@@ -225,6 +225,52 @@ function DailyMonitoringList() {
       });
   };
 
+  // Declare variables for statistics
+  const [userDeviceID, setUserDeviceID] = useState("50000406");
+  const [type, setType] = useState("drive");
+  const [driveNo, setDriveNo] = useState("6");
+
+  const handleStatistics = (event) => {
+    event.preventDefault();
+
+    // Perform the statistics API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/statistics",
+        requestMethod: "POST",
+        requestParams: {
+          devID: "50000406",
+          type: "drive",
+          driveno: "6",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        let resp = [];
+        resp["status"] = data["success"];
+        resp["message"] = JSON.stringify(data);
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        let resp = [];
+        resp["status"] = false;
+        resp["message"] = JSON.stringify(error);
+        setResponseData(error);
+      });
+  };
+
   const handleApi = (event) => {
     event.preventDefault();
     switch (currentApi) {
@@ -239,6 +285,9 @@ function DailyMonitoringList() {
         break;
       case "core/v1/bike-intell/valcode":
         handleActivationCode(event);
+        break;
+      case "core/v1/bike-intell/statistics":
+        handleStatistics(event);
         break;
     }
   };
@@ -547,6 +596,65 @@ function DailyMonitoringList() {
                                 value={userUby}
                                 onChange={(e) => {
                                   setUserUby(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of statistics */}
+                      {selectedOption === apiData[0].apis[4].apiLink && (
+                        <form onSubmit={handleStatistics}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Device ID:</label>
+                              <input
+                                id="devid"
+                                type="text"
+                                name="devid"
+                                value={userDeviceID}
+                                onChange={(e) => {
+                                  setUserDeviceID(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Type:</label>
+                              <input
+                                id="type"
+                                type="text"
+                                name="type"
+                                value={type}
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Drive No:</label>
+                              <input
+                                id="driveno"
+                                type="text"
+                                name="driveno"
+                                value={driveNo}
+                                onChange={(e) => {
+                                  setDriveNo(e.target.value);
                                 }}
                                 style={{
                                   display: "block",
