@@ -35,27 +35,38 @@ function DailyMonitoringList() {
   const [currentApi, setCurrentApi] = useState(
     "core/v1/bike-intell/checklogin"
   );
-  const [respData, setResponseData] = useState([]);
+  const [responseData, setResponseData] = useState([]);
+
+  const backendUrl = "http://localhost:8000/v2/test";
 
   const handleLogin = (event) => {
     event.preventDefault();
 
     // Perform the login API request using fetch or Axios
-    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/checklogin", {
+    fetch(backendUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ u: username, p: password }),
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/ ",
+        apiLink: "core/v1/bike-intell/checklogin ",
+        requestMethod: "POST",
+        requestParams: {
+          u: "saurabh.singh@enginecal.com",
+          p: "123456",
+        },
+        validationParams: {},
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server
         console.log(data);
         let resp = [];
-        resp["status"] = data["success"];
+        resp["status"] = data.testResult["success"];
         resp["message"] = JSON.stringify(data);
-        setResponseData(resp);
+        setResponseData(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -86,11 +97,7 @@ function DailyMonitoringList() {
       .then((data) => {
         // Handle the response from the server
         console.log(data);
-
-        let resp = [];
-        resp["status"] = data["status"];
-        resp["message"] = JSON.stringify(data);
-        setResponseData(resp);
+        setResponseData(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -130,6 +137,47 @@ function DailyMonitoringList() {
           emergency_no1: profileEmergencyNo1,
           emergency_no2: profileEmergencyNo2,
         },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        let resp = [];
+        resp["status"] = data["success"];
+        resp["message"] = JSON.stringify(data);
+        setResponseData(resp);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        let resp = [];
+        resp["status"] = false;
+        resp["message"] = JSON.stringify(error);
+        setResponseData(resp);
+      });
+  };
+
+  // Declare variables for new activation code (valcode)
+  const [userACode, setUserACode] = useState("Sa1234");
+  const [userMac, setUserMac] = useState("56d788cdc641eeA");
+  const [userUby, setUserUby] = useState("saurabh.singh@enginecal.com");
+
+  const handleActivationCode = (event) => {
+    event.preventDefault();
+
+    // Perform the New Activation code API request using fetch or Axios
+    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/valcode", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        acode: userACode,
+        mac: userMac,
+        uby: userUby,
       }),
     })
       .then((response) => response.json())
@@ -421,6 +469,67 @@ function DailyMonitoringList() {
                           )}
                         </form>
                       )}
+                      {/* Implementation of new activation code */}
+                      {selectedOption === apiData[0].apis[3].apiLink && (
+                        <form onSubmit={handleActivationCode}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                Activation Code:
+                              </label>
+                              <input
+                                id="acode"
+                                type="text"
+                                name="acode"
+                                value={userACode}
+                                onChange={(e) => {
+                                  setUserACode(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Mac:</label>
+                              <input
+                                id="mac"
+                                type="text"
+                                name="mac"
+                                value={userMac}
+                                onChange={(e) => {
+                                  setUserMac(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Uby:</label>
+                              <input
+                                id="uby"
+                                type="text"
+                                name="uby"
+                                value={userUby}
+                                onChange={(e) => {
+                                  setUserUby(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
 
                       <button
                         onClick={toggleInputVisibility}
@@ -446,16 +555,17 @@ function DailyMonitoringList() {
                     Run test
                   </button>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status === undefined
+                    {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : respData.status === true
+                      : responseData.testResult.success === true
                       ? "Success"
                       : "Failed"}
                   </div>,
                   <div style={{ alignContent: "center" }}>
-                    {respData.status === undefined
+                    {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : respData.message}
+                      : responseData.message ||
+                        "Missing message field in test result"}
                   </div>,
                 ],
               ]}

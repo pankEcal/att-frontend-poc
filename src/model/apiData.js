@@ -72,16 +72,16 @@ const bikeIntellData = {
       },
     },
 
-    {
-      applicationName: "Drive Score",
-      apiLink: "core/v1/bike-intell/statistics",
-      requestMethod: "POST",
-      requestParams: {
-        devID: "50000406",
-        type: "drive",
-        driveno: "6",
-      },
-    },
+    // {
+    //   applicationName: "Drive Score",
+    //   apiLink: "core/v1/bike-intell/statistics",
+    //   requestMethod: "POST",
+    //   requestParams: {
+    //     devID: "50000406",
+    //     type: "drive",
+    //     driveno: "6",
+    //   },
+    // },
 
     {
       applicationName: "Vehicle Model",
