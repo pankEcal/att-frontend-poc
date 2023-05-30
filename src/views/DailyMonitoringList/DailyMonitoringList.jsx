@@ -271,6 +271,45 @@ function DailyMonitoringList() {
       });
   };
 
+  // Declare variables for vehicle model
+  const [mfd, setMFD] = useState("Aprilia_IND_B");
+
+  const handleVehicleModel = (event) => {
+    event.preventDefault();
+
+    // Perform the statistics API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/veh_model",
+        requestMethod: "POST",
+        requestParams: {
+          mfd: "Aprilia_IND_B",
+        },
+        validationParams: {
+          success: true,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setResponseData(error);
+      });
+  };
+
   const handleApi = (event) => {
     event.preventDefault();
     switch (currentApi) {
@@ -288,6 +327,9 @@ function DailyMonitoringList() {
         break;
       case "core/v1/bike-intell/statistics":
         handleStatistics(event);
+        break;
+      case "core/v1/bike-intell/veh_model":
+        handleVehicleModel(event);
         break;
     }
   };
@@ -655,6 +697,29 @@ function DailyMonitoringList() {
                                 value={driveNo}
                                 onChange={(e) => {
                                   setDriveNo(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of statistics */}
+                      {selectedOption === apiData[0].apis[5].apiLink && (
+                        <form onSubmit={handleVehicleModel}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">MFD:</label>
+                              <input
+                                id="mfd"
+                                type="text"
+                                name="mfd"
+                                value={mfd}
+                                onChange={(e) => {
+                                  setMFD(e.target.value);
                                 }}
                                 style={{
                                   display: "block",
