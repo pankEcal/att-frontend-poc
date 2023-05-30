@@ -86,12 +86,23 @@ function DailyMonitoringList() {
     event.preventDefault();
 
     // Perform the forgot API request using fetch or Axios
-    fetch("https://evaai.enginecal.com/core/v1/bike-intell/forgetpass", {
+    fetch(backendUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: forgetEmail, password: forgetPassword }),
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/forgetpass",
+        requestMethod: "POST",
+        requestParams: {
+          email: "test@enginecal.com",
+          password: "123@Ecal",
+        },
+        validationParams: {
+          message: "Password has been updated successfully!!!",
+        },
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -122,20 +133,25 @@ function DailyMonitoringList() {
     event.preventDefault();
 
     // Perform the New Profile API request using fetch or Axios
-    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/profile", {
+    fetch(backendUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: {
-          deviceid: deviceID,
-          name: profileName,
-          password: profilePassword,
-          email: profileEmail,
-          mobile: profileMobileNo,
-          emergency_no1: profileEmergencyNo1,
-          emergency_no2: profileEmergencyNo2,
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/profile",
+        requestMethod: "POST",
+        requestParams: {
+          user: {
+            deviceid: "50000411",
+            name: "Rahul",
+            password: "1234ec",
+            email: "somewhere@example.com",
+            mobile: "+91 9876543210",
+            emergency_no1: "+91 1234567890",
+            emergency_no2: "+91 1234567890",
+          },
         },
       }),
     })
@@ -147,7 +163,7 @@ function DailyMonitoringList() {
         let resp = [];
         resp["status"] = data["success"];
         resp["message"] = JSON.stringify(data);
-        setResponseData(resp);
+        setResponseData(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -156,7 +172,7 @@ function DailyMonitoringList() {
         let resp = [];
         resp["status"] = false;
         resp["message"] = JSON.stringify(error);
-        setResponseData(resp);
+        setResponseData(error);
       });
   };
 
@@ -169,15 +185,23 @@ function DailyMonitoringList() {
     event.preventDefault();
 
     // Perform the New Activation code API request using fetch or Axios
-    fetch("http://evaaidev.enginecal.com/core/v1/bike-intell/valcode", {
+    fetch(backendUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        acode: userACode,
-        mac: userMac,
-        uby: userUby,
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/valcode",
+        requestMethod: "POST",
+        requestParams: {
+          acode: "Sa1234",
+          mac: "56d788cdc641eeA",
+          uby: "saurabh.singh@enginecal.coma",
+        },
+        validationParams: {
+          success: true,
+        },
       }),
     })
       .then((response) => response.json())
@@ -188,7 +212,7 @@ function DailyMonitoringList() {
         let resp = [];
         resp["status"] = data["success"];
         resp["message"] = JSON.stringify(data);
-        setResponseData(resp);
+        setResponseData(data);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -197,7 +221,7 @@ function DailyMonitoringList() {
         let resp = [];
         resp["status"] = false;
         resp["message"] = JSON.stringify(error);
-        setResponseData(resp);
+        setResponseData(error);
       });
   };
 
@@ -212,6 +236,9 @@ function DailyMonitoringList() {
         break;
       case "core/v1/bike-intell/profile":
         handleNewProfile(event);
+        break;
+      case "core/v1/bike-intell/valcode":
+        handleActivationCode(event);
         break;
     }
   };
@@ -564,7 +591,7 @@ function DailyMonitoringList() {
                   <div style={{ alignContent: "center" }}>
                     {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : responseData.message ||
+                      : responseData.testResult.message ||
                         "Missing message field in test result"}
                   </div>,
                 ],
