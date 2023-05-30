@@ -310,6 +310,102 @@ function DailyMonitoringList() {
       });
   };
 
+  // Declare variables for vehicle specification
+  const [vehicleMFD, setVehicleMFD] = useState("Hyundai_IND_C");
+  const [vehicleModel, setVehicleModel] = useState("Eon");
+  const [vehicleFuel, setVehicleFuel] = useState("Diesel");
+
+  const handleVehicleSpecifications = (event) => {
+    event.preventDefault();
+
+    // Perform the vehicle specification API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/veh_spec",
+        requestMethod: "POST",
+        requestParams: {
+          mfd: "Hyundai_IND_C",
+          model: "Eon",
+          fuel: "Diesel",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setResponseData(error);
+      });
+  };
+
+  // Declare variables for new vehicle profile
+  const [newDeviceID, setNewDeviceID] = useState("50000410");
+  const [newVehicleRegistration, setNewVehicleRegistration] =
+    useState("KA 01 ZZ 99979");
+  const [newVehicleFuel, setNewVehicleFuel] = useState("Petrol");
+  const [newVehicleManufacturer, setNewVehicleManufacturer] =
+    useState("Aprilia_IND_B");
+  const [newVehicleModel, setNewVehicleModel] = useState("SR125");
+  const [newVehicleVarient, setNewVehicleVarient] = useState("BS6");
+  const [mfgYear, setMfgYear] = useState("2015");
+  const [engineCapacity, setEngineCapacity] = useState("0.125");
+  const [odo, setOdo] = useState("123");
+
+  const handleNewVehicleProfile = (event) => {
+    event.preventDefault();
+
+    // Perform the vehicle specification API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/vehicle",
+        requestMethod: "POST",
+        requestParams: {
+          veh_basic: {
+            deviceid: "50000410",
+            veh_registration: "KA 01 ZZ 99979",
+            veh_manufacturer: "Aprilia_IND_B",
+            veh_model: "SR125",
+            veh_varient: "BS6",
+            fuel_type: "Petrol",
+            mfg_year: "2015",
+            engine_capacity: "0.125",
+            odo: "123",
+          },
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setResponseData(error);
+      });
+  };
+
   const handleApi = (event) => {
     event.preventDefault();
     switch (currentApi) {
@@ -329,6 +425,21 @@ function DailyMonitoringList() {
         handleStatistics(event);
         break;
       case "core/v1/bike-intell/veh_model":
+        handleVehicleModel(event);
+        break;
+      case "core/v1/bike-intell/veh_spec":
+        handleVehicleSpecifications(event);
+        break;
+      case "core/v1/bike-intell/vehicle":
+        handleNewVehicleProfile(event);
+        break;
+      case "core/v1/bike-intell/getcalvalues":
+        handleVehicleModel(event);
+        break;
+      case "core/v1/bike-intell/monitor_flag":
+        handleVehicleModel(event);
+        break;
+      case "core/v1/bike-intell/logout":
         handleVehicleModel(event);
         break;
     }
@@ -574,7 +685,7 @@ function DailyMonitoringList() {
                                 id="eno2"
                                 type="text"
                                 name="emergency_no2"
-                                value={profileEmergencyNo1}
+                                value={profileEmergencyNo2}
                                 onChange={(e) => {
                                   setProfileEmergencyNo2(e.target.value);
                                 }}
@@ -707,7 +818,7 @@ function DailyMonitoringList() {
                           )}
                         </form>
                       )}
-                      {/* Implementation of statistics */}
+                      {/* Implementation of vehicle model */}
                       {selectedOption === apiData[0].apis[5].apiLink && (
                         <form onSubmit={handleVehicleModel}>
                           {isInputVisible && (
@@ -720,6 +831,241 @@ function DailyMonitoringList() {
                                 value={mfd}
                                 onChange={(e) => {
                                   setMFD(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of vehicle specification */}
+                      {selectedOption === apiData[0].apis[6].apiLink && (
+                        <form onSubmit={handleVehicleSpecifications}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">MFD:</label>
+                              <input
+                                id="mfd"
+                                type="text"
+                                name="mfd"
+                                value={vehicleMFD}
+                                onChange={(e) => {
+                                  setVehicleMFD(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Model:</label>
+                              <input
+                                id="model"
+                                type="text"
+                                name="model"
+                                value={vehicleModel}
+                                onChange={(e) => {
+                                  setVehicleModel(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Fuel:</label>
+                              <input
+                                id="fuel"
+                                type="text"
+                                name="fuel"
+                                value={vehicleFuel}
+                                onChange={(e) => {
+                                  setVehicleFuel(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of new profile registration */}
+                      {selectedOption === apiData[0].apis[7].apiLink && (
+                        <form onSubmit={handleNewVehicleProfile}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Device ID:</label>
+                              <input
+                                id="deviceid"
+                                type="text"
+                                name="deviceid"
+                                value={newDeviceID}
+                                onChange={(e) => {
+                                  setNewDeviceID(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                Registration No:
+                              </label>
+                              <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                value={newVehicleRegistration}
+                                onChange={(e) => {
+                                  setNewVehicleRegistration(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Fuel:</label>
+                              <input
+                                id="email"
+                                type="text"
+                                name="email"
+                                value={newVehicleFuel}
+                                onChange={(e) => {
+                                  setNewVehicleFuel(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Manufacturer:</label>
+                              <input
+                                id="mfg"
+                                type="text"
+                                name="mfg"
+                                value={newVehicleManufacturer}
+                                onChange={(e) => {
+                                  setNewVehicleManufacturer(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Vehicle Model:</label>
+                              <input
+                                id="mobileno"
+                                type="text"
+                                name="mobile"
+                                value={newVehicleModel}
+                                onChange={(e) => {
+                                  setNewVehicleModel(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                Vehicle Varient:
+                              </label>
+                              <input
+                                id="eno1"
+                                type="text"
+                                name="emergency_no1"
+                                value={newVehicleVarient}
+                                onChange={(e) => {
+                                  setNewVehicleVarient(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                Manufacturing Year:
+                              </label>
+                              <input
+                                id="eno2"
+                                type="text"
+                                name="emergency_no2"
+                                value={mfgYear}
+                                onChange={(e) => {
+                                  setMfgYear(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">
+                                EngineCapacity:
+                              </label>
+                              <input
+                                id="eno2"
+                                type="text"
+                                name="emergency_no2"
+                                value={engineCapacity}
+                                onChange={(e) => {
+                                  setEngineCapacity(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">ODO:</label>
+                              <input
+                                id="eno2"
+                                type="text"
+                                name="emergency_no2"
+                                value={odo}
+                                onChange={(e) => {
+                                  setOdo(e.target.value);
                                 }}
                                 style={{
                                   display: "block",
