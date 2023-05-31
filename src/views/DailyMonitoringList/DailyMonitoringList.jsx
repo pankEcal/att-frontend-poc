@@ -519,7 +519,7 @@ function DailyMonitoringList() {
         setResponseData(error);
       });
   };
-  // Handling all the API's in one function
+  // Handling all the API's function in one function
   function runAll(event) {
     console.log("Running all the API's at same time..");
     console.log("Check login : " + handleLogin(event));
