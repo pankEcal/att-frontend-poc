@@ -519,6 +519,22 @@ function DailyMonitoringList() {
         setResponseData(error);
       });
   };
+  // Handling all the API's in one function
+  function runAll(event) {
+    console.log("Running all the API's at same time..");
+    console.log("Check login : " + handleLogin(event));
+    handleLogin(event);
+    handleForgetPassword(event);
+    handleNewProfile(event);
+    handleActivationCode(event);
+    handleStatistics(event);
+    handleVehicleModel(event);
+    handleVehicleSpecifications(event);
+    handleNewVehicleProfile(event);
+    handleCalibrationValues(event);
+    handleMonitorFlag(event);
+    handleLogout(event);
+  }
 
   const handleApi = (event) => {
     event.preventDefault();
@@ -1304,6 +1320,8 @@ function DailyMonitoringList() {
       </ItemGrid>
 
       <div>
+        <button onClick={runAll}>testing</button>
+
         <h3 align="center">Report</h3>
         <TableContainer>
           <Table
