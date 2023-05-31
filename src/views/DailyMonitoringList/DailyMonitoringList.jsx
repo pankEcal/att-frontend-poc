@@ -120,14 +120,16 @@ function DailyMonitoringList() {
         setResponseData(resp);
       });
   };
-
+  // Declare variables for new profile
   const [deviceID, setDeviceID] = useState("50000411");
   const [profileName, setProfileName] = useState("Rahul");
   const [profilePassword, setProfilePassword] = useState("1234ec");
   const [profileEmail, setProfileEmail] = useState("somewhere@example.com");
   const [profileMobileNo, setProfileMobileNo] = useState("+91 9876543210");
-  const [profileEmergencyNo1, setProfileEmergencyNo1] = "+91 1234567890";
-  const [profileEmergencyNo2, setProfileEmergencyNo2] = "+91 1234567890";
+  const [profileEmergencyNo1, setProfileEmergencyNo1] =
+    useState("+91 1234567890");
+  const [profileEmergencyNo2, setProfileEmergencyNo2] =
+    useState("+91 1234567890");
 
   const handleNewProfile = (event) => {
     event.preventDefault();
@@ -406,6 +408,118 @@ function DailyMonitoringList() {
       });
   };
 
+  // Declare variables for getting calibration values
+  const [devID, setDevID] = useState("50000410");
+
+  const handleCalibrationValues = (event) => {
+    event.preventDefault();
+
+    // Perform the statistics API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/getcalvalues",
+        requestMethod: "POST",
+        requestParams: {
+          devID: "50000410",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setResponseData(error);
+      });
+  };
+
+  // Declare variables for monitor flags
+  const [devIDFlag, setDevIDFlag] = useState("50000410");
+
+  const handleMonitorFlag = (event) => {
+    event.preventDefault();
+
+    // Perform the statistics API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/monitor_flag",
+        requestMethod: "POST",
+        requestParams: {
+          devID: "50000410",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setResponseData(error);
+      });
+  };
+
+  // Declare variables for Logout
+  const [user, setUser] = useState("saurabh.singh@enginecal.com");
+
+  const handleLogout = (event) => {
+    event.preventDefault();
+
+    // Perform the statistics API request using fetch or Axios
+    fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        baseUrl: "https://evaai.enginecal.com/",
+        apiLink: "core/v1/bike-intell/logout",
+        requestMethod: "POST",
+        requestParams: {
+          u: "saurabh.singh@enginecal.com",
+        },
+        validationParams: {
+          errorMessage: "Invalid Operation user was already logged out!",
+          success: "false",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+
+        setResponseData(data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setResponseData(error);
+      });
+  };
+
   const handleApi = (event) => {
     event.preventDefault();
     switch (currentApi) {
@@ -434,13 +548,13 @@ function DailyMonitoringList() {
         handleNewVehicleProfile(event);
         break;
       case "core/v1/bike-intell/getcalvalues":
-        handleVehicleModel(event);
+        handleCalibrationValues(event);
         break;
       case "core/v1/bike-intell/monitor_flag":
-        handleVehicleModel(event);
+        handleMonitorFlag(event);
         break;
       case "core/v1/bike-intell/logout":
-        handleVehicleModel(event);
+        handleLogout(event);
         break;
     }
   };
@@ -900,7 +1014,7 @@ function DailyMonitoringList() {
                           )}
                         </form>
                       )}
-                      {/* Implementation of new profile registration */}
+                      {/* Implementation of new vehicle profile registration */}
                       {selectedOption === apiData[0].apis[7].apiLink && (
                         <form onSubmit={handleNewVehicleProfile}>
                           {isInputVisible && (
@@ -1066,6 +1180,75 @@ function DailyMonitoringList() {
                                 value={odo}
                                 onChange={(e) => {
                                   setOdo(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of calibration values */}
+                      {selectedOption === apiData[0].apis[8].apiLink && (
+                        <form onSubmit={handleCalibrationValues}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Device ID:</label>
+                              <input
+                                id="devid"
+                                type="text"
+                                name="devid"
+                                value={devID}
+                                onChange={(e) => {
+                                  setDevID(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of monitor flags */}
+                      {selectedOption === apiData[0].apis[9].apiLink && (
+                        <form onSubmit={handleMonitorFlag}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">Device ID:</label>
+                              <input
+                                id="devid"
+                                type="text"
+                                name="devid"
+                                value={devIDFlag}
+                                onChange={(e) => {
+                                  setDevIDFlag(e.target.value);
+                                }}
+                                style={{
+                                  display: "block",
+                                  marginTop: "10px",
+                                }}
+                              />
+                            </div>
+                          )}
+                        </form>
+                      )}
+                      {/* Implementation of Logout */}
+                      {selectedOption === apiData[0].apis[10].apiLink && (
+                        <form onSubmit={handleLogout}>
+                          {isInputVisible && (
+                            <div>
+                              <label htmlFor="inputField">User:</label>
+                              <input
+                                id="devid"
+                                type="text"
+                                name="devid"
+                                value={user}
+                                onChange={(e) => {
+                                  setUser(e.target.value);
                                 }}
                                 style={{
                                   display: "block",
