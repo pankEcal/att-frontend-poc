@@ -644,8 +644,8 @@ function DailyMonitoringList() {
                 "API",
                 "Tests",
                 "Status",
-                "Message",
-                "Test Duration",
+                "Test Result",
+                "Duration",
                 "Server Response",
               ]}
               tableData={[
@@ -1363,7 +1363,8 @@ function DailyMonitoringList() {
                   <div style={{ alignContent: "center" }}>
                     {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : responseData.testResult.message}
+                      : responseData.testResult.message ||
+                        responseData.serverResponse.message}
                   </div>,
                   <div style={{ alignContent: "center" }}>
                     {responseData.testResult === undefined
@@ -1398,8 +1399,8 @@ function DailyMonitoringList() {
             backgroundColor: "#ff0000",
             // backgroundColor: "#ff0000",
             color: "white",
-            // marginLeft: "515px",
-            marginLeft: "1080px",
+            marginLeft: "15px",
+            // marginLeft: "1080px",
             marginBottom: "20px",
           }}
           // onClick={onClickHandler}
@@ -1426,9 +1427,9 @@ function DailyMonitoringList() {
                 <TableCell style={{ fontWeight: "bold" }} align="center">
                   API Name
                 </TableCell>
-                <TableCell style={{ fontWeight: "bold" }} align="center">
+                {/* <TableCell style={{ fontWeight: "bold" }} align="center">
                   Test Result
-                </TableCell>
+                </TableCell> */}
                 <TableCell style={{ fontWeight: "bold" }} align="center">
                   Server Response
                 </TableCell>
@@ -1454,9 +1455,9 @@ function DailyMonitoringList() {
                     <TableCell style={{ verticalAlign: "top" }} align="center">
                       {res.testResult.apiName}
                     </TableCell>
-                    <TableCell style={{ verticalAlign: "top" }} align="center">
+                    {/* <TableCell style={{ verticalAlign: "top" }} align="center">
                       {JSON.stringify(res.testResult)}
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell
                       align="left"
                       style={{

@@ -27,6 +27,7 @@ function CustomTable(props) {
                 return (
                   <TableCell
                     // align="center"
+                    style={{ fontWeight: "bold" }}
                     className={classes.tableCell + " " + classes.tableHeadCell}
                     key={key}
                   >
