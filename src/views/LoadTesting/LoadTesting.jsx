@@ -140,7 +140,7 @@ function LoadTestingPage() {
           <span>&nbsp; &nbsp; &nbsp; </span>
 
           <label htmlFor="repeatation">
-            <span>repeatation &nbsp;</span>{" "}
+            <span>repetition &nbsp;</span>{" "}
           </label>
           <input
             type="number"
@@ -169,10 +169,11 @@ function LoadTestingPage() {
           <br></br>
           <br></br>
           <button
+            style={{ align: "center", width: "100px" }}
             className="MuiButtonBase-root-84 MuiButton-root-70 RegularButton-button-174 RegularButton-danger-180 RegularButton-fullWidth-175"
             type="submit"
           >
-            POST /fileupload
+            Upload
           </button>
         </form>
       </div>

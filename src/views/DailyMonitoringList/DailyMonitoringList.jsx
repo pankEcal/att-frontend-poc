@@ -17,10 +17,14 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import getApiData from "../../model/apiData";
+import getBatchData from "../../model/batchData";
 
 const apiData = getApiData();
+const batchData = getBatchData();
 
 console.log(apiData[0].apis[0].apiLink);
+
+const backendUrl = "http://localhost:8000/v2/test";
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -31,13 +35,20 @@ function DailyMonitoringList() {
 
   const [username, setUsername] = useState("saurabh.singh@enginecal.com");
   const [password, setPassword] = useState("123456");
-
   const [currentApi, setCurrentApi] = useState(
     "core/v1/bike-intell/checklogin"
   );
   const [responseData, setResponseData] = useState([]);
-
-  const backendUrl = "http://localhost:8000/v2/test";
+  const [checkLoginPayloadData, setPayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/ ",
+    apiLink: "core/v1/bike-intell/checklogin ",
+    requestMethod: "POST",
+    requestParams: {
+      u: username,
+      p: password,
+    },
+    validationParams: {},
+  });
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -48,16 +59,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/ ",
-        apiLink: "core/v1/bike-intell/checklogin ",
-        requestMethod: "POST",
-        requestParams: {
-          u: "saurabh.singh@enginecal.com",
-          p: "123456",
-        },
-        validationParams: {},
-      }),
+      body: JSON.stringify(checkLoginPayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -519,10 +521,25 @@ function DailyMonitoringList() {
         setResponseData(error);
       });
   };
+
+  const [allApiData, setAllApiData] = useState([]);
+
+  console.log(
+    allApiData.testData && allApiData.testData.map((e) => e.serverResponse)
+  );
+
+  console.log(allApiData.testData);
+  for (let index in allApiData.testData) {
+    console.log(allApiData.testData[index].testResult.url);
+    console.log(allApiData.testData[index].testResult.status);
+    console.log(allApiData.testData[index].testResult.message);
+  }
+
   // Handling all the API's function in one function
-  function runAll(event) {
+  const runAll = (event) => {
+    event.preventDefault();
     console.log("Running all the API's at same time..");
-    console.log("Check login : " + handleLogin(event));
+
     handleLogin(event);
     handleForgetPassword(event);
     handleNewProfile(event);
@@ -534,7 +551,36 @@ function DailyMonitoringList() {
     handleCalibrationValues(event);
     handleMonitorFlag(event);
     handleLogout(event);
-  }
+  };
+
+  const batchUrl = "http://localhost:8000/v2/test/batch";
+
+  const handleBatchTest = (event) => {
+    event.preventDefault();
+
+    // Perform the batch API request using fetch or Axios
+    fetch(batchUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(batchData),
+    })
+      .then((responseData) => responseData.json())
+      .then((batchData) => {
+        // Handle the response from the server
+
+        console.log(batchData);
+
+        setAllApiData(batchData);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setAllApiData(error);
+      });
+  };
 
   const handleApi = (event) => {
     event.preventDefault();
@@ -1309,8 +1355,7 @@ function DailyMonitoringList() {
                   <div style={{ alignContent: "center" }}>
                     {responseData.testResult === undefined
                       ? "Waiting for data"
-                      : responseData.testResult.message ||
-                        "Missing message field in test result"}
+                      : responseData.testResult.message}
                   </div>,
                 ],
               ]}
@@ -1320,7 +1365,57 @@ function DailyMonitoringList() {
       </ItemGrid>
 
       <div>
-        <button onClick={runAll}>testing</button>
+        <button onClick={handleBatchTest}>testing</button>
+
+        <TableContainer>
+          <Table
+            aria-label="simple table"
+            stickyHeader
+            style={{ width: "1200px" }}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>URL</TableCell>
+                <TableCell align="center">Status</TableCell>
+                <TableCell align="center">Test Duration</TableCell>
+                <TableCell align="center">API Name</TableCell>
+                <TableCell align="center">Test Result</TableCell>
+                <TableCell align="center">Server Response</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {allApiData.testData &&
+                allApiData.testData.map((res) => (
+                  <TableRow>
+                    <TableCell component="th" scope="row">
+                      {res.testResult.url}
+                    </TableCell>
+                    <TableCell align="center">
+                      {res.testResult.status}
+                    </TableCell>
+                    <TableCell align="center">
+                      {res.testResult.testDuration}
+                    </TableCell>
+                    <TableCell align="center">
+                      {res.testResult.apiName}
+                    </TableCell>
+                    <TableCell align="center">
+                      {JSON.stringify(res.testResult)}
+                    </TableCell>
+                    <TableCell
+                      align="left"
+                      style={{
+                        maxWidth: "400px",
+                        overflowWrap: "break-word",
+                      }}
+                    >
+                      {JSON.stringify(res.serverResponse)}
+                    </TableCell>{" "}
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
         <h3 align="center">Report</h3>
         <TableContainer>
