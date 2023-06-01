@@ -43,7 +43,11 @@ function CustomTable(props) {
               <TableRow key={key}>
                 {prop.map((prop, key) => {
                   return (
-                    <TableCell className={classes.tableCell} key={key}>
+                    <TableCell
+                      style={{ verticalAlign: "top" }}
+                      className={classes.tableCell}
+                      key={key}
+                    >
                       {prop}
                     </TableCell>
                   );

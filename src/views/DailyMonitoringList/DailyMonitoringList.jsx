@@ -230,7 +230,7 @@ function DailyMonitoringList() {
   };
 
   // Declare variables for statistics
-  const [userDeviceID, setUserDeviceID] = useState("50000406");
+  const [userDeviceID, setUserDeviceID] = useState("D8073293314"); // 50000406
   const [type, setType] = useState("drive");
   const [driveNo, setDriveNo] = useState("6");
 
@@ -248,8 +248,8 @@ function DailyMonitoringList() {
         apiLink: "core/v1/bike-intell/statistics",
         requestMethod: "POST",
         requestParams: {
-          devID: "50000406",
-          type: "drive",
+          devID: "D8073293314", //50000406
+          type: "Bluetooth",
           driveno: "6",
         },
       }),
@@ -640,7 +640,14 @@ function DailyMonitoringList() {
           content={
             <CardTable
               tableHeaderColor="primary"
-              tableHead={["API", "Tests", "Status", "Message"]}
+              tableHead={[
+                "API",
+                "Tests",
+                "Status",
+                "Message",
+                "Test Duration",
+                "Server Response",
+              ]}
               tableData={[
                 [
                   <div>
@@ -1341,11 +1348,12 @@ function DailyMonitoringList() {
                       backgroundColor: "red",
                       border: "none",
                       borderRadius: "4px",
+                      verticalAlign: "top",
                     }}
                   >
                     Run test
                   </button>,
-                  <div style={{ alignContent: "center" }}>
+                  <div>
                     {responseData.testResult === undefined
                       ? "Waiting for data"
                       : responseData.testResult.success === true
@@ -1356,6 +1364,24 @@ function DailyMonitoringList() {
                     {responseData.testResult === undefined
                       ? "Waiting for data"
                       : responseData.testResult.message}
+                  </div>,
+                  <div style={{ alignContent: "center" }}>
+                    {responseData.testResult === undefined
+                      ? "Waiting for data"
+                      : responseData.testResult.testDuration}
+                  </div>,
+
+                  <div
+                    style={{
+                      alignContent: "center",
+                      maxWidth: "400px",
+                      overflowWrap: "break-word",
+                      verticalAlign: "top",
+                    }}
+                  >
+                    {responseData.testResult === undefined
+                      ? "Waiting for data"
+                      : JSON.stringify(responseData.serverResponse)}
                   </div>,
                 ],
               ]}

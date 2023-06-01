@@ -179,6 +179,7 @@ function LoadTestingPage() {
               width: "100px",
               marginLeft: "5px",
               backgroundColor: "#ff0000",
+              color: "white",
             }}
             type="submit"
           >
