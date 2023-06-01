@@ -18,6 +18,7 @@ function CustomTable(props) {
       <Table className={classes.table}>
         {tableHead !== undefined ? (
           <TableHead
+            style={{ fontWeight: "bold" }}
             align="center"
             className={classes[tableHeaderColor + "TableHeader"]}
           >

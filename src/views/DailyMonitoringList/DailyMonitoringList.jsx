@@ -1,4 +1,4 @@
-import { Card, Grid } from "material-ui";
+import { Card, Grid, Button } from "material-ui";
 
 import {
   RegularCard,
@@ -1365,7 +1365,22 @@ function DailyMonitoringList() {
       </ItemGrid>
 
       <div>
-        <button onClick={handleBatchTest}>testing</button>
+        {/* <button onClick={handleBatchTest}>testing</button> */}
+        <Button
+          style={{
+            color: "white",
+            backgroundColor: "#ff0000",
+            // backgroundColor: "#ff0000",
+            color: "white",
+            // marginLeft: "515px",
+            marginLeft: "1080px",
+            marginBottom: "20px",
+          }}
+          // onClick={onClickHandler}
+          onClick={handleBatchTest}
+        >
+          Run All API
+        </Button>
 
         <TableContainer>
           <Table
@@ -1375,12 +1390,22 @@ function DailyMonitoringList() {
           >
             <TableHead>
               <TableRow>
-                <TableCell>URL</TableCell>
-                <TableCell align="center">Status</TableCell>
-                <TableCell align="center">Test Duration</TableCell>
-                <TableCell align="center">API Name</TableCell>
-                <TableCell align="center">Test Result</TableCell>
-                <TableCell align="center">Server Response</TableCell>
+                <TableCell style={{ fontWeight: "bold" }}>URL</TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  Status
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  Test Duration
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  API Name
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  Test Result
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="center">
+                  Server Response
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -1417,7 +1442,7 @@ function DailyMonitoringList() {
           </Table>
         </TableContainer>
 
-        <h3 align="center">Report</h3>
+        {/* <h3 align="center">Report</h3>
         <TableContainer>
           <Table
             aria-label="simple table"
@@ -1446,7 +1471,7 @@ function DailyMonitoringList() {
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
+        </TableContainer> */}
       </div>
     </Grid>
   );

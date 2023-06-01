@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   withStyles,
@@ -15,16 +15,11 @@ import { regularCardStyle } from "variables/styles";
 
 import getApiData from "../../model/apiData";
 
+import getBatchData from "../../model/batchData";
+
 const url = "http://localhost:8000/dailymonitor/apis";
 
 const apiData = getApiData();
-
-const apiLinks = [
-  "core/v1/bike-intell/checklogin",
-  "event/v1/bike-intell/fileupload",
-  "event",
-  "core",
-];
 
 function ProcessResult(result) {
   let dataArray = result.body["data"];
@@ -42,6 +37,41 @@ function RegularCard(props) {
     await fetch(url)
       .then((r) => r.json().then((data) => ({ status: r.status, body: data })))
       .then((obj) => ProcessResult(obj));
+  };
+
+  const batchUrl = "http://localhost:8000/v2/test/batch";
+
+  const batchData = getBatchData();
+
+  const [allApiData, setAllApiData] = useState([]);
+
+  console.log(allApiData);
+
+  const handleBatchTest = (event) => {
+    event.preventDefault();
+
+    // Perform the batch API request using fetch or Axios
+    fetch(batchUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(batchData),
+    })
+      .then((responseData) => responseData.json())
+      .then((batchData) => {
+        // Handle the response from the server
+
+        console.log(batchData);
+
+        setAllApiData(batchData);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error(error);
+
+        setAllApiData(error);
+      });
   };
 
   return (
@@ -74,6 +104,7 @@ function RegularCard(props) {
               onChange={(e) => {
                 console.log("value: ", e.target.value);
               }}
+              style={{ marginRight: "20px" }}
             >
               Select base urls:
               {apiData[0].baseUrl.map((urls) => {
@@ -82,14 +113,19 @@ function RegularCard(props) {
               })}
             </select>
 
-            <Button
+            {/* <Button
               style={{
                 color: "white",
+                backgroundColor: "white",
+                color: "black",
+                marginLeft: "20px",
+                marginRight: "20px",
               }}
+              // onClick={onClickHandler}
               onClick={onClickHandler}
             >
               Run All
-            </Button>
+            </Button> */}
           </div>
         }
       />
