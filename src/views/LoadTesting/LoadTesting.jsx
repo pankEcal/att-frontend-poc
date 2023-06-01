@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { withStyles } from "material-ui";
+import { withStyles, Button } from "material-ui";
 import axios from "axios";
 
 import Table from "@material-ui/core/Table";
@@ -8,8 +8,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-
-import { Button } from "components";
 
 //import { Table } from "components";
 
@@ -105,9 +103,15 @@ function LoadTestingPage() {
 
   return (
     <div>
-      <Button color="danger" fullWidth>
-        {" "}
-        File Upload API{" "}
+      <Button
+        style={{
+          backgroundColor: "#ff0000",
+          width: "1200px",
+          marginLeft: "5px",
+          color: "white",
+        }}
+      >
+        File Upload API
       </Button>
       <div>
         <br />
@@ -168,13 +172,18 @@ function LoadTestingPage() {
           />
           <br></br>
           <br></br>
-          <button
-            style={{ align: "center", width: "100px" }}
-            className="MuiButtonBase-root-84 MuiButton-root-70 RegularButton-button-174 RegularButton-danger-180 RegularButton-fullWidth-175"
+
+          <Button
+            style={{
+              align: "center",
+              width: "100px",
+              marginLeft: "5px",
+              backgroundColor: "#ff0000",
+            }}
             type="submit"
           >
             Upload
-          </button>
+          </Button>
         </form>
       </div>
       <div>
@@ -183,11 +192,19 @@ function LoadTestingPage() {
           <Table aria-label="simple table" stickyHeader>
             <TableHead>
               <TableRow>
-                <TableCell>URL</TableCell>
-                <TableCell align="right">Status</TableCell>
-                <TableCell align="right">Duration</TableCell>
-                <TableCell align="right">Status Code</TableCell>
-                <TableCell align="right">Message</TableCell>
+                <TableCell style={{ fontWeight: "bold" }}>URL</TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="right">
+                  Status
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="right">
+                  Duration
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="right">
+                  Status Code
+                </TableCell>
+                <TableCell style={{ fontWeight: "bold" }} align="right">
+                  Message
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

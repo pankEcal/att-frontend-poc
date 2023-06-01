@@ -1412,19 +1412,23 @@ function DailyMonitoringList() {
               {allApiData.testData &&
                 allApiData.testData.map((res) => (
                   <TableRow>
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      style={{ verticalAlign: "top" }}
+                      component="th"
+                      scope="row"
+                    >
                       {res.testResult.url}
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell style={{ verticalAlign: "top" }} align="center">
                       {res.testResult.status}
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell style={{ verticalAlign: "top" }} align="center">
                       {res.testResult.testDuration}
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell style={{ verticalAlign: "top" }} align="center">
                       {res.testResult.apiName}
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell style={{ verticalAlign: "top" }} align="center">
                       {JSON.stringify(res.testResult)}
                     </TableCell>
                     <TableCell
@@ -1432,6 +1436,7 @@ function DailyMonitoringList() {
                       style={{
                         maxWidth: "400px",
                         overflowWrap: "break-word",
+                        verticalAlign: "top",
                       }}
                     >
                       {JSON.stringify(res.serverResponse)}
