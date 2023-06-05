@@ -668,7 +668,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleLogin}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Email:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Email:
+                              </label>
                               <input
                                 id="username"
                                 type="text"
@@ -679,14 +689,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Password:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Password:
+                              </label>
                               <input
                                 id="password"
                                 type="password"
@@ -697,7 +717,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -709,7 +729,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleForgetPassword}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Email:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Email:
+                              </label>
                               <input
                                 id="forgetEmail"
                                 type="text"
@@ -720,14 +750,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Password:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Password:
+                              </label>
                               <input
                                 id="forgetPassword"
                                 type="password"
@@ -738,7 +778,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -750,7 +790,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleNewProfile}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Device ID:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Device ID:
+                              </label>
                               <input
                                 id="deviceid"
                                 type="text"
@@ -761,14 +811,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Name:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Name:
+                              </label>
                               <input
                                 id="name"
                                 type="text"
@@ -779,14 +839,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Email:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Email:
+                              </label>
                               <input
                                 id="email"
                                 type="text"
@@ -797,7 +867,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -805,7 +875,17 @@ function DailyMonitoringList() {
 
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Set Password:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Set Password:
+                              </label>
                               <input
                                 id="password"
                                 type="password"
@@ -816,14 +896,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Mobile Number:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Mobile Number:
+                              </label>
                               <input
                                 id="mobileno"
                                 type="text"
@@ -834,14 +924,22 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 Emergency Number 1:
                               </label>
                               <input
@@ -854,14 +952,22 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 Emergency Number 2:
                               </label>
                               <input
@@ -874,7 +980,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -886,7 +992,15 @@ function DailyMonitoringList() {
                         <form onSubmit={handleActivationCode}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 Activation Code:
                               </label>
                               <input
@@ -899,14 +1013,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Mac:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Mac:
+                              </label>
                               <input
                                 id="mac"
                                 type="text"
@@ -917,14 +1041,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Uby:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Uby:
+                              </label>
                               <input
                                 id="uby"
                                 type="text"
@@ -935,7 +1069,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -947,7 +1081,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleStatistics}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Device ID:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Device ID:
+                              </label>
                               <input
                                 id="devid"
                                 type="text"
@@ -958,14 +1102,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Type:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Type:
+                              </label>
                               <input
                                 id="type"
                                 type="text"
@@ -976,14 +1130,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Drive No:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Drive No:
+                              </label>
                               <input
                                 id="driveno"
                                 type="text"
@@ -994,7 +1158,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1006,7 +1170,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleVehicleModel}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">MFD:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                MFD:
+                              </label>
                               <input
                                 id="mfd"
                                 type="text"
@@ -1017,7 +1191,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1029,7 +1203,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleVehicleSpecifications}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">MFD:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                MFD:
+                              </label>
                               <input
                                 id="mfd"
                                 type="text"
@@ -1040,14 +1224,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Model:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Model:
+                              </label>
                               <input
                                 id="model"
                                 type="text"
@@ -1058,14 +1252,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Fuel:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Fuel:
+                              </label>
                               <input
                                 id="fuel"
                                 type="text"
@@ -1076,7 +1280,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1088,7 +1292,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleNewVehicleProfile}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Device ID:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Device ID:
+                              </label>
                               <input
                                 id="deviceid"
                                 type="text"
@@ -1099,14 +1313,22 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 Registration No:
                               </label>
                               <input
@@ -1119,14 +1341,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Fuel:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Fuel:
+                              </label>
                               <input
                                 id="email"
                                 type="text"
@@ -1137,7 +1369,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1145,7 +1377,17 @@ function DailyMonitoringList() {
 
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Manufacturer:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Manufacturer:
+                              </label>
                               <input
                                 id="mfg"
                                 type="text"
@@ -1156,14 +1398,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Vehicle Model:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Vehicle Model:
+                              </label>
                               <input
                                 id="mobileno"
                                 type="text"
@@ -1174,14 +1426,22 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 Vehicle Varient:
                               </label>
                               <input
@@ -1194,14 +1454,22 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 Manufacturing Year:
                               </label>
                               <input
@@ -1214,14 +1482,22 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
                                 EngineCapacity:
                               </label>
                               <input
@@ -1234,14 +1510,24 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
                           )}
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">ODO:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                ODO:
+                              </label>
                               <input
                                 id="eno2"
                                 type="text"
@@ -1252,7 +1538,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1264,7 +1550,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleCalibrationValues}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Device ID:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Device ID:
+                              </label>
                               <input
                                 id="devid"
                                 type="text"
@@ -1275,7 +1571,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1287,7 +1583,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleMonitorFlag}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">Device ID:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                Device ID:
+                              </label>
                               <input
                                 id="devid"
                                 type="text"
@@ -1298,7 +1604,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1310,7 +1616,17 @@ function DailyMonitoringList() {
                         <form onSubmit={handleLogout}>
                           {isInputVisible && (
                             <div>
-                              <label htmlFor="inputField">User:</label>
+                              <label
+                                style={{
+                                  marginTop: "10px",
+                                  display: "inline-block",
+                                  fontWeight: "700",
+                                  color: "black",
+                                }}
+                                htmlFor="inputField"
+                              >
+                                User:
+                              </label>
                               <input
                                 id="devid"
                                 type="text"
@@ -1321,7 +1637,7 @@ function DailyMonitoringList() {
                                 }}
                                 style={{
                                   display: "block",
-                                  marginTop: "10px",
+                                  marginTop: "1px",
                                 }}
                               />
                             </div>
@@ -1333,6 +1649,7 @@ function DailyMonitoringList() {
                         onClick={toggleInputVisibility}
                         style={{
                           marginTop: "10px",
+                          fontWeight: "900",
                         }}
                       >
                         Input
