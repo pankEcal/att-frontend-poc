@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: att-frontend-tool
+    image: att-frontend-app
+    build:
+      context: .
+    ports:
+      - 3000:80
