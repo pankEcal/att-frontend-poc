@@ -24,7 +24,7 @@ const batchData = getBatchData();
 
 console.log(apiData[0].apis[0].apiLink);
 
-const backendUrl = "http://localhost:8000/v2/test";
+const backendUrl = "http://192.168.1.229:8000/v2/test";
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -553,7 +553,7 @@ function DailyMonitoringList() {
     handleLogout(event);
   };
 
-  const batchUrl = "http://localhost:8000/v2/test/batch";
+  const batchUrl = "http://192.168.1.229:8000/v2/test/batch";
 
   const handleBatchTest = (event) => {
     event.preventDefault();

@@ -17,7 +17,7 @@ import getApiData from "../../model/apiData";
 
 import getBatchData from "../../model/batchData";
 
-const url = "http://localhost:8000/dailymonitor/apis";
+const url = "http://192.168.1.229:8000/dailymonitor/apis";
 
 const apiData = getApiData();
 
@@ -39,7 +39,7 @@ function RegularCard(props) {
       .then((obj) => ProcessResult(obj));
   };
 
-  const batchUrl = "http://localhost:8000/v2/test/batch";
+  const batchUrl = "http://192.168.1.229:8000/v2/test/batch";
 
   const batchData = getBatchData();
 

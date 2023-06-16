@@ -76,7 +76,7 @@ function LoadTestingPage() {
 
   const handleSubmit = async () => {
     const formData = new FormData();
-    const backendUrl = "http://localhost:8000/fileupload";
+    const backendUrl = "http://192.168.1.229:8000/fileupload";
     let currentCount = 0;
 
     formData.append("csvfile", csvfile);
