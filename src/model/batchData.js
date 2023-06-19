@@ -1,4 +1,4 @@
-const batchData = {
+const bikeIntellData = {
   applicationName: "Bike Intell",
   baseUrl: "https://evaai.enginecal.com/",
   apis: [
@@ -130,5 +130,5 @@ const batchData = {
 };
 
 export default function getBatchData() {
-  return batchData;
+  return bikeIntellData;
 }

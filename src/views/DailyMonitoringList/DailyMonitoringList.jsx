@@ -20,7 +20,7 @@ import getApiData from "../../model/apiData";
 import getBatchData from "../../model/batchData";
 
 const apiData = getApiData();
-const batchData = getBatchData();
+const bikeIntellData = getBatchData();
 
 console.log(apiData[0].apis[0].apiLink);
 
@@ -564,15 +564,15 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(batchData),
+      body: JSON.stringify(bikeIntellData),
     })
       .then((responseData) => responseData.json())
-      .then((batchData) => {
+      .then((bikeIntellData) => {
         // Handle the response from the server
 
-        console.log(batchData);
+        console.log(bikeIntellData);
 
-        setAllApiData(batchData);
+        setAllApiData(bikeIntellData);
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -1790,37 +1790,6 @@ function DailyMonitoringList() {
             </TableBody>
           </Table>
         </TableContainer>
-
-        {/* <h3 align="center">Report</h3>
-        <TableContainer>
-          <Table
-            aria-label="simple table"
-            stickyHeader
-            style={{ width: "1200px" }}
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell>Application</TableCell>
-                <TableCell align="center">API Name</TableCell>
-                <TableCell align="center">URL</TableCell>
-                <TableCell align="center">Method</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {apiData[0].apis.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell component="th" scope="row">
-                    {apiData[0].applicationName}
-                  </TableCell>
-                  <TableCell align="center">{row.applicationName}</TableCell>
-                  <TableCell align="center">{row.apiLink}</TableCell>
-                  <TableCell align="center">{row.requestMethod}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer> */}
       </div>
     </Grid>
   );
