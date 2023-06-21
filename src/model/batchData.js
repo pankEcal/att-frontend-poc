@@ -1,3 +1,4 @@
+// BikeIntell Data
 const bikeIntellData = {
   applicationName: "Bike Intell",
   baseUrl: "https://evaai.enginecal.com/",
@@ -127,6 +128,13 @@ const bikeIntellData = {
       },
     },
   ],
+};
+
+// Cai data
+const caiData = {
+  applicationName: "Bike Intell",
+  baseUrl: "https://evaai.enginecal.com/",
+  apis: [],
 };
 
 export default function getBatchData() {
