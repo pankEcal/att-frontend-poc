@@ -24,7 +24,8 @@ const bikeIntellData = getBatchData();
 
 console.log(apiData[0].apis[0].apiLink);
 
-const backendUrl = "http://192.168.1.229:8000/v2/test";
+const backendUrl =
+  "http://aaf730795797549df8f86026e02542d1-505746706.ap-southeast-1.elb.amazonaws.com:8000/v2/test";
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -553,7 +554,9 @@ function DailyMonitoringList() {
     handleLogout(event);
   };
 
-  const batchUrl = "http://192.168.1.229:8000/v2/test/batch";
+  // const batchUrl = "https://att-backend.onrender.com/v2/test/batch";
+  const batchUrl =
+    "http://aaf730795797549df8f86026e02542d1-505746706.ap-southeast-1.elb.amazonaws.com:8000/v2/test/batch";
 
   const handleBatchTest = (event) => {
     event.preventDefault();
