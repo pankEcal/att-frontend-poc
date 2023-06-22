@@ -1,0 +1,40 @@
+image: python:3.8.16
+
+pipelines:
+  branches:
+    hardcoded-apis: 
+      - step:
+         name: Build docker image and push to AWS ECR
+         services:
+           - docker
+         caches:
+           - pip
+         script:
+           - pip install awscli
+           - eval $(aws ecr get-login --region $AWS_REGION --no-include-email)
+           - docker build -t 546380255342.dkr.ecr.ap-southeast-1.amazonaws.com/frontend-att .
+           - docker tag 546380255342.dkr.ecr.ap-southeast-1.amazonaws.com/frontend-att 546380255342.dkr.ecr.ap-southeast-1.amazonaws.com/frontend-att:${BITBUCKET_COMMIT}
+           - docker push 546380255342.dkr.ecr.ap-southeast-1.amazonaws.com/frontend-att:${BITBUCKET_COMMIT}
+      - step:
+          name: "Deploy to Develop"
+          # deployment: develop
+          script:
+            - apt update && apt-get -y install gettext-base
+            - envsubst < frontend-deployment.yaml
+            - pipe: atlassian/aws-eks-kubectl-run:1.2.0
+              variables:
+                AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+                AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+                AWS_DEFAULT_REGION: $AWS_REGION
+                CLUSTER_NAME: $CLUSTER_NAME
+                KUBECTL_COMMAND: "apply"
+                RESOURCE_PATH: "frontend-deployment.yaml"
+                DEBUG: "true"
+ 
+options:
+  docker: true
+  size: 2x
+definitions:
+    services:
+      docker:
+        memory: 4096
