@@ -12,23 +12,16 @@
 
 Find the following directories and files:
 
-material-dashboard-react
-├── CHANGELOG.md
-├── LICENSE.md
-├── README.md
+Frontend-att-testing-tool
 ├── documentation
-│   ├── assets
-│   │   ├── css
-│   │   ├── img
-│   │   └── js
-│   └── tutorial-components.html
-├── package.json
+│   └── assets 
+│   └── img
 ├── public
 │   ├── apple-icon.png
 │   ├── favicon.ico
 │   ├── index.html
 │   └── manifest.json
-└── src
+├── src
 ├── assets
 │   ├── css
 │   │   └── material-dashboard-react.css
@@ -44,8 +37,6 @@ material-dashboard-react
 │   │   └── IconButton.jsx
 │   ├── CustomInput
 │   │   └── CustomInput.jsx
-│   ├── Footer
-│   │   └── Footer.jsx
 │   ├── Grid
 │   │   └── ItemGrid.jsx
 │   ├── Header
@@ -55,23 +46,39 @@ material-dashboard-react
 │   │   └── Sidebar.jsx
 │   ├── Table
 │   │   └── Table.jsx
-│   ├── Tasks
-│   │   └── Tasks.jsx
 │   └── index.js
 ├── containers
 │   └── App
 │   └── App.jsx
-├── index.js
-├── logo.svg
+├── environments
+│ └── environment.js
+├── model
+│   └── apiData.js
+│   └── batchData.js
 ├── routes
 │   ├── app.jsx
 │   └── index.jsx
 ├── variables
 │   └── styles.jsx
-└── views
-├── DailyMonitoringList
-│   └── DailyMonitoringList.jsx
-├── LoadTesting
+├── views
+│ └── DailyMonitoringList
+│   │ └── DailyMonitoringList.jsx
+│ └── LoadTesting
 │   └── LoadTesting.jsx
-└── UserProfile
-└── UserProfile.jsx
+├── index.js
+├── logo.svg
+├── README.md
+├── package.json
+
+## About Application:
+
+This ATT application used for API Automation testing.
+
+1. Dockerfile
+   Created Docker file for building, running, and managing containers on servers and the cloud.
+
+2. Frontend deployment yaml file
+   Created deployment yaml file for deploying an application through one or more hosting models in cloud.
+
+3. Frontend service yaml file
+   Created Service yaml file for wide range of services delivered on demand to companies and customers over the internet.
