@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment-att-tool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-att
+  template:
+    metadata:
+      labels:
+        app: frontend-att
+    spec:
+      containers:
+      - name: frontend-att
+        image: aswini19/frontend-att
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+
+---
+# This file:
+
+#It will create two pods for the frontend React.js application.
+#It will create a Kubernetes Deployment named “frontend-deployment”. 
+#It will use the `aswini19/frontend-att` Docker image to create the Kubernetes application container.
