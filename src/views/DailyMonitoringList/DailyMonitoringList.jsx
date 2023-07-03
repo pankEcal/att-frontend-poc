@@ -22,10 +22,9 @@ import getBatchData from "../../model/batchData";
 const apiData = getApiData();
 const bikeIntellData = getBatchData();
 
-console.log(apiData[0].apis[0].apiLink);
+// console.log(apiData[0].apis[0].apiLink);
 
-const backendUrl =
-  "http://aaf730795797549df8f86026e02542d1-505746706.ap-southeast-1.elb.amazonaws.com:8000/v2/test";
+const backendUrl = "http://localhost:8000/v2/test";
 
 function DailyMonitoringList() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -65,7 +64,7 @@ function DailyMonitoringList() {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the server
-        console.log(data);
+        // console.log(data);
         let resp = [];
         resp["status"] = data.testResult["success"];
         resp["message"] = JSON.stringify(data);
@@ -525,9 +524,9 @@ function DailyMonitoringList() {
 
   const [allApiData, setAllApiData] = useState([]);
 
-  console.log(
-    allApiData.testData && allApiData.testData.map((e) => e.serverResponse)
-  );
+  // console.log(
+  //   allApiData.testData && allApiData.testData.map((e) => e.serverResponse)
+  // );
 
   console.log(allApiData.testData);
   for (let index in allApiData.testData) {
@@ -555,8 +554,7 @@ function DailyMonitoringList() {
   };
 
   // const batchUrl = "https://att-backend.onrender.com/v2/test/batch";
-  const batchUrl =
-    "http://aaf730795797549df8f86026e02542d1-505746706.ap-southeast-1.elb.amazonaws.com:8000/v2/test/batch";
+  const batchUrl = "http://localhost:8000/v2/test/batch";
 
   const handleBatchTest = (event) => {
     event.preventDefault();
@@ -689,6 +687,11 @@ function DailyMonitoringList() {
                                 value={username}
                                 onChange={(e) => {
                                   setUsername(e.target.value);
+                                  let currentState = {
+                                    ...checkLoginPayloadData,
+                                  };
+                                  currentState.requestParams.u = e.target.value;
+                                  setPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -717,6 +720,11 @@ function DailyMonitoringList() {
                                 value={password}
                                 onChange={(e) => {
                                   setPassword(e.target.value);
+                                  let currentState = {
+                                    ...checkLoginPayloadData,
+                                  };
+                                  currentState.requestParams.p = e.target.value;
+                                  setPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
