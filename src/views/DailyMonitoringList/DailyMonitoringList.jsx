@@ -367,7 +367,7 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for new vehicle profile
+  // Declare variables for new vehicle profile "core/v1/bike-intell/vehicle"
   const [newDeviceID, setNewDeviceID] = useState("50000410");
   const [newVehicleRegistration, setNewVehicleRegistration] =
     useState("KA 01 ZZ 99979");
@@ -380,6 +380,25 @@ function DailyMonitoringList() {
   const [engineCapacity, setEngineCapacity] = useState("0.125");
   const [odo, setOdo] = useState("123");
 
+  const [vehiclePayloadData, setVehiclePayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/vehicle",
+    requestMethod: "POST",
+    requestParams: {
+      veh_basic: {
+        newDeviceID: "50000410",
+        newVehicleRegistration: "KA 01 ZZ 99979",
+        newVehicleManufacturer: "Aprilia_IND_B",
+        newVehicleModel: "SR125",
+        newVehicleVarient: "BS6",
+        newVehicleFuel: "Petrol",
+        mfgYear: "2015",
+        engineCapacity: "0.125",
+        odo: "123",
+      },
+    },
+  });
+
   const handleNewVehicleProfile = (event) => {
     event.preventDefault();
 
@@ -389,24 +408,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/vehicle",
-        requestMethod: "POST",
-        requestParams: {
-          veh_basic: {
-            deviceid: "50000410",
-            veh_registration: "KA 01 ZZ 99979",
-            veh_manufacturer: "Aprilia_IND_B",
-            veh_model: "SR125",
-            veh_varient: "BS6",
-            fuel_type: "Petrol",
-            mfg_year: "2015",
-            engine_capacity: "0.125",
-            odo: "123",
-          },
-        },
-      }),
+      body: JSON.stringify(vehiclePayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -1484,6 +1486,14 @@ function DailyMonitoringList() {
                                 value={newDeviceID}
                                 onChange={(e) => {
                                   setNewDeviceID(e.target.value);
+                                  //update vehicle data
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.newDeviceID =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1512,6 +1522,13 @@ function DailyMonitoringList() {
                                 value={newVehicleRegistration}
                                 onChange={(e) => {
                                   setNewVehicleRegistration(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.newVehicleRegistration =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1540,6 +1557,13 @@ function DailyMonitoringList() {
                                 value={newVehicleFuel}
                                 onChange={(e) => {
                                   setNewVehicleFuel(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.newVehicleFuel =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1569,6 +1593,13 @@ function DailyMonitoringList() {
                                 value={newVehicleManufacturer}
                                 onChange={(e) => {
                                   setNewVehicleManufacturer(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.newVehicleManufacturer =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1597,6 +1628,13 @@ function DailyMonitoringList() {
                                 value={newVehicleModel}
                                 onChange={(e) => {
                                   setNewVehicleModel(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.newVehicleModel =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1625,6 +1663,13 @@ function DailyMonitoringList() {
                                 value={newVehicleVarient}
                                 onChange={(e) => {
                                   setNewVehicleVarient(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.newVehicleVarient =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1653,6 +1698,13 @@ function DailyMonitoringList() {
                                 value={mfgYear}
                                 onChange={(e) => {
                                   setMfgYear(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.mfgYear =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1681,6 +1733,13 @@ function DailyMonitoringList() {
                                 value={engineCapacity}
                                 onChange={(e) => {
                                   setEngineCapacity(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.engineCapacity =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1709,6 +1768,14 @@ function DailyMonitoringList() {
                                 value={odo}
                                 onChange={(e) => {
                                   setOdo(e.target.value);
+                                  setEngineCapacity(e.target.value);
+                                  let currentState = {
+                                    ...vehiclePayloadData,
+                                  };
+                                  currentState.requestParams.odo =
+                                    e.target.value;
+
+                                  setVehiclePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
