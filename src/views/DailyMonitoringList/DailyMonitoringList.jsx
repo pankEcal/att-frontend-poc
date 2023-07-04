@@ -425,8 +425,17 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for getting calibration values
+  // Declare variables for getting calibration values "core/v1/bike-intell/getcalvalues"
   const [devID, setDevID] = useState("50000410");
+
+  const [getCalValuePayloadData, setGetCalValuePayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/getcalvalues",
+    requestMethod: "POST",
+    requestParams: {
+      devID: "50000410",
+    },
+  });
 
   const handleCalibrationValues = (event) => {
     event.preventDefault();
@@ -437,14 +446,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/getcalvalues",
-        requestMethod: "POST",
-        requestParams: {
-          devID: "50000410",
-        },
-      }),
+      body: JSON.stringify(getCalValuePayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -1809,6 +1811,14 @@ function DailyMonitoringList() {
                                 value={devID}
                                 onChange={(e) => {
                                   setDevID(e.target.value);
+                                  //update for calValue data
+                                  let currentState = {
+                                    ...getCalValuePayloadData,
+                                  };
+                                  currentState.requestParams.devID =
+                                    e.target.value;
+
+                                  setGetCalValuePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
