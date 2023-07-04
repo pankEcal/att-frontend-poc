@@ -325,10 +325,21 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for vehicle specification
+  // Declare variables for vehicle specification  "core/v1/bike-intell/veh_spec"
   const [vehicleMFD, setVehicleMFD] = useState("Hyundai_IND_C");
   const [vehicleModel, setVehicleModel] = useState("Eon");
   const [vehicleFuel, setVehicleFuel] = useState("Diesel");
+  const [vehicleSpecificationPayloadData, setVehicleSpecificationPayloadData] =
+    useState({
+      baseUrl: "https://evaai.enginecal.com/",
+      apiLink: "core/v1/bike-intell/veh_spec",
+      requestMethod: "POST",
+      requestParams: {
+        vehicleMFD: "Hyundai_IND_C",
+        vehicleModel: "Eon",
+        vehicleFuel: "Diesel",
+      },
+    });
 
   const handleVehicleSpecifications = (event) => {
     event.preventDefault();
@@ -339,16 +350,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/veh_spec",
-        requestMethod: "POST",
-        requestParams: {
-          mfd: "Hyundai_IND_C",
-          model: "Eon",
-          fuel: "Diesel",
-        },
-      }),
+      body: JSON.stringify(vehicleSpecificationPayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -1213,6 +1215,7 @@ function DailyMonitoringList() {
                                 value={userDeviceID}
                                 onChange={(e) => {
                                   setUserDeviceID(e.target.value);
+                                  //update the statistics data
                                   let currentState = {
                                     ...statisticsPayloadData,
                                   };
@@ -1323,6 +1326,7 @@ function DailyMonitoringList() {
                                 value={mfd}
                                 onChange={(e) => {
                                   setMFD(e.target.value);
+                                  //update the vehicle  model data
                                   let currentState = {
                                     ...vehicleModelPayloadData,
                                   };
@@ -1363,6 +1367,16 @@ function DailyMonitoringList() {
                                 value={vehicleMFD}
                                 onChange={(e) => {
                                   setVehicleMFD(e.target.value);
+                                  //update the vehicle specification data
+                                  let currentState = {
+                                    ...vehicleSpecificationPayloadData,
+                                  };
+                                  currentState.requestParams.vehicleMFD =
+                                    e.target.value;
+
+                                  setVehicleSpecificationPayloadData(
+                                    currentState
+                                  );
                                 }}
                                 style={{
                                   display: "block",
@@ -1391,6 +1405,15 @@ function DailyMonitoringList() {
                                 value={vehicleModel}
                                 onChange={(e) => {
                                   setVehicleModel(e.target.value);
+                                  let currentState = {
+                                    ...vehicleSpecificationPayloadData,
+                                  };
+                                  currentState.requestParams.vehicleModel =
+                                    e.target.value;
+
+                                  setVehicleSpecificationPayloadData(
+                                    currentState
+                                  );
                                 }}
                                 style={{
                                   display: "block",
@@ -1419,6 +1442,15 @@ function DailyMonitoringList() {
                                 value={vehicleFuel}
                                 onChange={(e) => {
                                   setVehicleFuel(e.target.value);
+                                  let currentState = {
+                                    ...vehicleSpecificationPayloadData,
+                                  };
+                                  currentState.requestParams.vehicleFuel =
+                                    e.target.value;
+
+                                  setVehicleSpecificationPayloadData(
+                                    currentState
+                                  );
                                 }}
                                 style={{
                                   display: "block",
