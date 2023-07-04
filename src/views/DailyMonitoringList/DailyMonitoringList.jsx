@@ -126,7 +126,7 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for new profile
+  // handle POST request for "core/v1/bike-intell/profile"
   const [deviceID, setDeviceID] = useState("50000411");
   const [profileName, setProfileName] = useState("Rahul");
   const [profilePassword, setProfilePassword] = useState("1234ec");
@@ -137,6 +137,23 @@ function DailyMonitoringList() {
   const [profileEmergencyNo2, setProfileEmergencyNo2] =
     useState("+91 1234567890");
 
+  const [profilePayloadData, setProfilePayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/profile",
+    requestMethod: "POST",
+    requestParams: {
+      user: {
+        deviceID: "50000411",
+        profileName: "Rahul",
+        profilePassword: "1234ec",
+        profileEmail: "somewhere@example.com",
+        profileMobileNo: "+91 9876543210",
+        profileEmergencyNo1: "+91 1234567890",
+        profileEmergencyNo2: "+91 1234567890",
+      },
+    },
+  });
+
   const handleNewProfile = (event) => {
     event.preventDefault();
 
@@ -146,22 +163,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/profile",
-        requestMethod: "POST",
-        requestParams: {
-          user: {
-            deviceid: "50000411",
-            name: "Rahul",
-            password: "1234ec",
-            email: "somewhere@example.com",
-            mobile: "+91 9876543210",
-            emergency_no1: "+91 1234567890",
-            emergency_no2: "+91 1234567890",
-          },
-        },
-      }),
+      body: JSON.stringify(profilePayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -185,9 +187,23 @@ function DailyMonitoringList() {
   };
 
   // Declare variables for new activation code (valcode)
+  //core/v1-bike/intell/valcode
   const [userACode, setUserACode] = useState("Sa1234");
   const [userMac, setUserMac] = useState("56d788cdc641eeA");
   const [userUby, setUserUby] = useState("saurabh.singh@enginecal.com");
+  const [valcodePayLoadData, setValcodePayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/valcode",
+    requestMethod: "POST",
+    requestParams: {
+      userACode: "Sa1234",
+      userMac: "56d788cdc641eeA",
+      userUby: "saurabh.singh@enginecal.coma",
+    },
+    validationParams: {
+      success: true,
+    },
+  });
 
   const handleActivationCode = (event) => {
     event.preventDefault();
@@ -198,19 +214,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/valcode",
-        requestMethod: "POST",
-        requestParams: {
-          acode: "Sa1234",
-          mac: "56d788cdc641eeA",
-          uby: "saurabh.singh@enginecal.coma",
-        },
-        validationParams: {
-          success: true,
-        },
-      }),
+      body: JSON.stringify(valcodePayLoadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -233,10 +237,21 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for statistics
+  // Declare variables for "core/v1/bike-intell/statistics"
+
   const [userDeviceID, setUserDeviceID] = useState("D8073293314"); // 50000406
   const [type, setType] = useState("drive");
   const [driveNo, setDriveNo] = useState("6");
+  const [statisticsPayloadData, setStatisticsPayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/statistics",
+    requestMethod: "POST",
+    requestParams: {
+      userDeviceID: "D8073293314", //50000406
+      type: "Bluetooth",
+      driveNo: "6",
+    },
+  });
 
   const handleStatistics = (event) => {
     event.preventDefault();
@@ -247,16 +262,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/statistics",
-        requestMethod: "POST",
-        requestParams: {
-          devID: "D8073293314", //50000406
-          type: "Bluetooth",
-          driveno: "6",
-        },
-      }),
+      body: JSON.stringify(statisticsPayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -843,6 +849,13 @@ function DailyMonitoringList() {
                                 value={deviceID}
                                 onChange={(e) => {
                                   setDeviceID(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.deviceID =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -871,6 +884,13 @@ function DailyMonitoringList() {
                                 value={profileName}
                                 onChange={(e) => {
                                   setProfileName(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.profileName =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -899,6 +919,13 @@ function DailyMonitoringList() {
                                 value={profileEmail}
                                 onChange={(e) => {
                                   setProfileEmail(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.profileEmail =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -928,6 +955,13 @@ function DailyMonitoringList() {
                                 value={profilePassword}
                                 onChange={(e) => {
                                   setProfilePassword(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.profilePassword =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -956,6 +990,13 @@ function DailyMonitoringList() {
                                 value={profileMobileNo}
                                 onChange={(e) => {
                                   setProfileMobileNo(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.profileMobileNo =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -984,6 +1025,13 @@ function DailyMonitoringList() {
                                 value={profileEmergencyNo1}
                                 onChange={(e) => {
                                   setProfileEmergencyNo1(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.profileEmergencyNo1 =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1012,6 +1060,13 @@ function DailyMonitoringList() {
                                 value={profileEmergencyNo2}
                                 onChange={(e) => {
                                   setProfileEmergencyNo2(e.target.value);
+                                  let currentState = {
+                                    ...profilePayloadData,
+                                  };
+                                  currentState.requestParams.profileEmergencyNo2 =
+                                    e.target.value;
+
+                                  setProfilePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1045,6 +1100,14 @@ function DailyMonitoringList() {
                                 value={userACode}
                                 onChange={(e) => {
                                   setUserACode(e.target.value);
+                                  //update the valcode data
+                                  let currentState = {
+                                    ...valcodePayLoadData,
+                                  };
+                                  currentState.requestParams.userACode =
+                                    e.target.value;
+
+                                  setValcodePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1073,6 +1136,14 @@ function DailyMonitoringList() {
                                 value={userMac}
                                 onChange={(e) => {
                                   setUserMac(e.target.value);
+
+                                  let currentState = {
+                                    ...valcodePayLoadData,
+                                  };
+                                  currentState.requestParams.userMac =
+                                    e.target.value;
+
+                                  setValcodePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1101,6 +1172,13 @@ function DailyMonitoringList() {
                                 value={userUby}
                                 onChange={(e) => {
                                   setUserUby(e.target.value);
+                                  let currentState = {
+                                    ...valcodePayLoadData,
+                                  };
+                                  currentState.requestParams.userUby =
+                                    e.target.value;
+
+                                  setValcodePayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1134,6 +1212,13 @@ function DailyMonitoringList() {
                                 value={userDeviceID}
                                 onChange={(e) => {
                                   setUserDeviceID(e.target.value);
+                                  let currentState = {
+                                    ...statisticsPayloadData,
+                                  };
+                                  currentState.requestParams.userDeviceID =
+                                    e.target.value;
+
+                                  setStatisticsPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1162,6 +1247,13 @@ function DailyMonitoringList() {
                                 value={type}
                                 onChange={(e) => {
                                   setType(e.target.value);
+                                  let currentState = {
+                                    ...statisticsPayloadData,
+                                  };
+                                  currentState.requestParams.type =
+                                    e.target.value;
+
+                                  setStatisticsPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -1190,6 +1282,13 @@ function DailyMonitoringList() {
                                 value={driveNo}
                                 onChange={(e) => {
                                   setDriveNo(e.target.value);
+                                  let currentState = {
+                                    ...statisticsPayloadData,
+                                  };
+                                  currentState.requestParams.driveNo =
+                                    e.target.value;
+
+                                  setStatisticsPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
