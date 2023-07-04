@@ -33,6 +33,7 @@ function DailyMonitoringList() {
     setInputVisible(!isInputVisible);
   };
 
+  // handle POST request for "core/v1/bike-intell/checklogin"
   const [username, setUsername] = useState("saurabh.singh@enginecal.com");
   const [password, setPassword] = useState("123456");
   const [currentApi, setCurrentApi] = useState(
@@ -81,8 +82,21 @@ function DailyMonitoringList() {
       });
   };
 
+  // handle POST request for "core/v1/bike-intell/forgetpass"
   const [forgetEmail, setForgetEmail] = useState("test@enginecal.com");
   const [forgetPassword, setForgetPassword] = useState("123@Ecal");
+  const [forgetPasswordPayloadData, setForgetPasswordPayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/forgetpass",
+    requestMethod: "POST",
+    requestParams: {
+      email: forgetEmail,
+      password: forgetPassword,
+    },
+    validationParams: {
+      message: "Password has been updated successfully!!!",
+    },
+  });
 
   const handleForgetPassword = (event) => {
     event.preventDefault();
@@ -93,18 +107,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/forgetpass",
-        requestMethod: "POST",
-        requestParams: {
-          email: "test@enginecal.com",
-          password: "123@Ecal",
-        },
-        validationParams: {
-          message: "Password has been updated successfully!!!",
-        },
-      }),
+      body: JSON.stringify(forgetPasswordPayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -122,6 +125,7 @@ function DailyMonitoringList() {
         setResponseData(resp);
       });
   };
+
   // Declare variables for new profile
   const [deviceID, setDeviceID] = useState("50000411");
   const [profileName, setProfileName] = useState("Rahul");
@@ -687,6 +691,8 @@ function DailyMonitoringList() {
                                 value={username}
                                 onChange={(e) => {
                                   setUsername(e.target.value);
+
+                                  // updating the payload data
                                   let currentState = {
                                     ...checkLoginPayloadData,
                                   };
@@ -758,6 +764,15 @@ function DailyMonitoringList() {
                                 value={forgetEmail}
                                 onChange={(e) => {
                                   setForgetEmail(e.target.value);
+
+                                  // updating the payload data
+                                  let currentState = {
+                                    ...forgetPasswordPayloadData,
+                                  };
+                                  currentState.requestParams.email =
+                                    e.target.value;
+
+                                  setForgetPasswordPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
@@ -786,6 +801,15 @@ function DailyMonitoringList() {
                                 value={forgetPassword}
                                 onChange={(e) => {
                                   setForgetPassword(e.target.value);
+
+                                  // updating the payload data
+                                  let currentState = {
+                                    ...forgetPasswordPayloadData,
+                                  };
+                                  currentState.requestParams.password =
+                                    e.target.value;
+
+                                  setForgetPasswordPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
