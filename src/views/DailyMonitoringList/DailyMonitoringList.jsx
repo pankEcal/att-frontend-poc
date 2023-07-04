@@ -285,8 +285,19 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for vehicle model
+  // Declare variables for vehicle model "core/v1/bike-intell/veh_model"
   const [mfd, setMFD] = useState("Aprilia_IND_B");
+  const [vehicleModelPayloadData, setVehicleModelPayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/veh_model",
+    requestMethod: "POST",
+    requestParams: {
+      mfd: "Aprilia_IND_B",
+    },
+    validationParams: {
+      success: true,
+    },
+  });
 
   const handleVehicleModel = (event) => {
     event.preventDefault();
@@ -297,17 +308,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/veh_model",
-        requestMethod: "POST",
-        requestParams: {
-          mfd: "Aprilia_IND_B",
-        },
-        validationParams: {
-          success: true,
-        },
-      }),
+      body: JSON.stringify(vehicleModelPayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -1322,6 +1323,13 @@ function DailyMonitoringList() {
                                 value={mfd}
                                 onChange={(e) => {
                                   setMFD(e.target.value);
+                                  let currentState = {
+                                    ...vehicleModelPayloadData,
+                                  };
+                                  currentState.requestParams.mfd =
+                                    e.target.value;
+
+                                  setVehicleModelPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
