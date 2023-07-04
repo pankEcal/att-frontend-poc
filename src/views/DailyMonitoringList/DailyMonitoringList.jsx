@@ -466,6 +466,15 @@ function DailyMonitoringList() {
   // Declare variables for monitor flags
   const [devIDFlag, setDevIDFlag] = useState("50000410");
 
+  const [monitorFlagPayLoadData, setMonitorFlagPayLoadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/monitor_flag",
+    requestMethod: "POST",
+    requestParams: {
+      devID: "50000411",
+    },
+  });
+
   const handleMonitorFlag = (event) => {
     event.preventDefault();
 
@@ -475,14 +484,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/monitor_flag",
-        requestMethod: "POST",
-        requestParams: {
-          devID: "50000410",
-        },
-      }),
+      body: JSON.stringify(monitorFlagPayLoadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -1854,6 +1856,14 @@ function DailyMonitoringList() {
                                 value={devIDFlag}
                                 onChange={(e) => {
                                   setDevIDFlag(e.target.value);
+                                  //update for monitor flag data
+                                  let currentState = {
+                                    ...monitorFlagPayLoadData,
+                                  };
+                                  currentState.requestParams.devID =
+                                    e.target.value;
+
+                                  setMonitorFlagPayLoadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
