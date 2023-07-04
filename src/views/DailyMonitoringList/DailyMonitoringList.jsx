@@ -502,6 +502,19 @@ function DailyMonitoringList() {
   // Declare variables for Logout
   const [user, setUser] = useState("saurabh.singh@enginecal.com");
 
+  const [logoutPayloadData, setLogoutPayloadData] = useState({
+    baseUrl: "https://evaai.enginecal.com/",
+    apiLink: "core/v1/bike-intell/logout",
+    requestMethod: "POST",
+    requestParams: {
+      u: "saurabh.singh@enginecal.com",
+    },
+    validationParams: {
+      errorMessage: "Invalid Operation user was already logged out!",
+      success: "false",
+    },
+  });
+
   const handleLogout = (event) => {
     event.preventDefault();
 
@@ -511,18 +524,7 @@ function DailyMonitoringList() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        baseUrl: "https://evaai.enginecal.com/",
-        apiLink: "core/v1/bike-intell/logout",
-        requestMethod: "POST",
-        requestParams: {
-          u: "saurabh.singh@enginecal.com",
-        },
-        validationParams: {
-          errorMessage: "Invalid Operation user was already logged out!",
-          success: "false",
-        },
-      }),
+      body: JSON.stringify(logoutPayloadData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -1885,6 +1887,13 @@ function DailyMonitoringList() {
                                 value={user}
                                 onChange={(e) => {
                                   setUser(e.target.value);
+                                  //updating lolgout data
+                                  let currentState = {
+                                    ...logoutPayloadData,
+                                  };
+                                  currentState.requestParams.u = e.target.value;
+
+                                  setLogoutPayloadData(currentState);
                                 }}
                                 style={{
                                   display: "block",
