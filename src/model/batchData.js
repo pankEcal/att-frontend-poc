@@ -1,7 +1,7 @@
-// BikeIntell Data
+// bikeIntellData Data
 const bikeIntellData = {
   applicationName: "Bike Intell",
-  baseUrl: "https://evaai.enginecal.com/",
+  baseUrl: ["https://evaai.enginecal.com/"],
   apis: [
     {
       apiName: "User Login Check",

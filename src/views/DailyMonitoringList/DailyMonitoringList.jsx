@@ -658,7 +658,7 @@ function DailyMonitoringList() {
     <Grid container>
       <ItemGrid xs={12} sm={12} md={12}>
         <RegularCard
-          cardTitle="SYSTEM"
+          cardTitle="System"
           content={
             <CardTable
               tableHeaderColor="primary"
@@ -1940,19 +1940,24 @@ function DailyMonitoringList() {
                   >
                     Run test
                   </button>,
-                  <div>
-                    {responseData.testResult === undefined
-                      ? "Waiting for data"
-                      : responseData.testResult.success === true
-                      ? "Success"
-                      : "Failed"}
-                  </div>,
-                  <div style={{ alignContent: "center" }}>
-                    {responseData.testResult === undefined
-                      ? "Waiting for data"
-                      : responseData.testResult.message ||
-                        responseData.serverResponse.message}
-                  </div>,
+                  <td>
+                    <div>
+                      {responseData.testResult === undefined
+                        ? "Waiting for data"
+                        : responseData.testResult.success === true
+                        ? "Success"
+                        : "Failed"}
+                    </div>
+                  </td>,
+
+                  <td>
+                    <div>
+                      {responseData.testResult === undefined
+                        ? "Waiting for data"
+                        : String(responseData.testResult.testDuration)}
+                    </div>
+                  </td>,
+
                   <div style={{ alignContent: "center" }}>
                     {responseData.testResult === undefined
                       ? "Waiting for data"
@@ -2000,7 +2005,7 @@ function DailyMonitoringList() {
           <Table
             aria-label="simple table"
             stickyHeader
-            style={{ width: "1200px" }}
+            style={{ width: "1215px" }}
           >
             <TableHead>
               <TableRow>

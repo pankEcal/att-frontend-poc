@@ -1,17 +1,7 @@
 const bikeIntellData = {
   applicationName: "Bike Intell",
-  baseUrl: [
-    "http://evaaidev.enginecal.com/",
-    "https://evaai.enginecal.com/",
-    "http://tvseoldev.enginecal.com/",
-    "https://evaeol.tvsmotor.com/",
-    "http://tvsrdsdev.enginecal.com/",
-    "https://evards.tvsmotor.com/",
-    "http://evactr.enginecal.com/",
-    "http://tvsctrdev.enginecal.com/",
-    "http://tvsrdsdev.enginecal.com/",
-    "https://evards.tvsmotor.com/",
-  ],
+  baseUrl: ["BikeIntell", "CAI", "Ridoscope", "EngineInsight"],
+
   apis: [
     {
       applicationName: "User Login Check",

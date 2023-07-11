@@ -104,7 +104,7 @@ function RegularCard(props) {
               onChange={(e) => {
                 console.log("value: ", e.target.value);
               }}
-              style={{ marginRight: "20px" }}
+              style={{ marginRight: "200px", marginTop: "15px" }}
             >
               Select base urls:
               {apiData[0].baseUrl.map((urls) => {
