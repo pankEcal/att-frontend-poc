@@ -143,13 +143,13 @@ function DailyMonitoringList() {
     requestMethod: "POST",
     requestParams: {
       user: {
-        deviceID: "50000411",
-        profileName: "Rahul",
-        profilePassword: "1234ec",
-        profileEmail: "somewhere@example.com",
-        profileMobileNo: "+91 9876543210",
-        profileEmergencyNo1: "+91 1234567890",
-        profileEmergencyNo2: "+91 1234567890",
+        deviceid: "50000411",
+        name: "Rahul",
+        password: "1234ec",
+        email: "somewhere@example.com",
+        mobile: "+91 9876543210",
+        emergency_no1: "+91 1234567890",
+        emergency_no2: "+91 1234567890",
       },
     },
   });
@@ -196,9 +196,9 @@ function DailyMonitoringList() {
     apiLink: "core/v1/bike-intell/valcode",
     requestMethod: "POST",
     requestParams: {
-      userACode: "Sa1234",
-      userMac: "56d788cdc641eeA",
-      userUby: "saurabh.singh@enginecal.coma",
+      acode: "Sa1234",
+      mac: "56d788cdc641eeA",
+      uby: "saurabh.singh@enginecal.coma",
     },
     validationParams: {
       success: true,
@@ -237,7 +237,7 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for "core/v1/bike-intell/statistics"
+  // Declare variables for drive score "core/v1/bike-intell/statistics"
 
   const [userDeviceID, setUserDeviceID] = useState("D8073293314"); // 50000406
   const [type, setType] = useState("drive");
@@ -247,9 +247,9 @@ function DailyMonitoringList() {
     apiLink: "core/v1/bike-intell/statistics",
     requestMethod: "POST",
     requestParams: {
-      userDeviceID: "D8073293314", //50000406
+      devID: "D8073293314", //50000406
       type: "Bluetooth",
-      driveNo: "6",
+      driveno: "6",
     },
   });
 
@@ -325,7 +325,7 @@ function DailyMonitoringList() {
       });
   };
 
-  // Declare variables for vehicle specification  "core/v1/bike-intell/veh_spec"
+  // Declare variables for vehicle variant and other specs  "core/v1/bike-intell/veh_spec"
   const [vehicleMFD, setVehicleMFD] = useState("Hyundai_IND_C");
   const [vehicleModel, setVehicleModel] = useState("Eon");
   const [vehicleFuel, setVehicleFuel] = useState("Diesel");
@@ -335,9 +335,9 @@ function DailyMonitoringList() {
       apiLink: "core/v1/bike-intell/veh_spec",
       requestMethod: "POST",
       requestParams: {
-        vehicleMFD: "Hyundai_IND_C",
-        vehicleModel: "Eon",
-        vehicleFuel: "Diesel",
+        mfd: "Hyundai_IND_C",
+        model: "Eon",
+        fuel: "Diesel",
       },
     });
 
@@ -386,14 +386,14 @@ function DailyMonitoringList() {
     requestMethod: "POST",
     requestParams: {
       veh_basic: {
-        newDeviceID: "50000410",
-        newVehicleRegistration: "KA 01 ZZ 99979",
-        newVehicleManufacturer: "Aprilia_IND_B",
-        newVehicleModel: "SR125",
-        newVehicleVarient: "BS6",
-        newVehicleFuel: "Petrol",
-        mfgYear: "2015",
-        engineCapacity: "0.125",
+        deviceid: "50000410",
+        veh_registration: "KA 01 ZZ 99979",
+        veh_manufacturer: "Aprilia_IND_B",
+        veh_model: "SR125",
+        veh_varient: "BS6",
+        fuel_type: "Petrol",
+        mfg_year: "2015",
+        engine_capacity: "0.125",
         odo: "123",
       },
     },
@@ -863,7 +863,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.deviceID =
+                                  currentState.requestParams.deviceid =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -898,7 +898,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.profileName =
+                                  currentState.requestParams.name =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -933,7 +933,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.profileEmail =
+                                  currentState.requestParams.email =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -969,7 +969,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.profilePassword =
+                                  currentState.requestParams.password =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -1004,7 +1004,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.profileMobileNo =
+                                  currentState.requestParams.mobile =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -1039,7 +1039,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.profileEmergencyNo1 =
+                                  currentState.requestParams.emergency_no1 =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -1074,7 +1074,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...profilePayloadData,
                                   };
-                                  currentState.requestParams.profileEmergencyNo2 =
+                                  currentState.requestParams.emergency_no2 =
                                     e.target.value;
 
                                   setProfilePayloadData(currentState);
@@ -1115,7 +1115,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...valcodePayLoadData,
                                   };
-                                  currentState.requestParams.userACode =
+                                  currentState.requestParams.acode =
                                     e.target.value;
 
                                   setValcodePayloadData(currentState);
@@ -1151,7 +1151,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...valcodePayLoadData,
                                   };
-                                  currentState.requestParams.userMac =
+                                  currentState.requestParams.mac =
                                     e.target.value;
 
                                   setValcodePayloadData(currentState);
@@ -1186,7 +1186,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...valcodePayLoadData,
                                   };
-                                  currentState.requestParams.userUby =
+                                  currentState.requestParams.uby =
                                     e.target.value;
 
                                   setValcodePayloadData(currentState);
@@ -1227,7 +1227,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...statisticsPayloadData,
                                   };
-                                  currentState.requestParams.userDeviceID =
+                                  currentState.requestParams.devID =
                                     e.target.value;
 
                                   setStatisticsPayloadData(currentState);
@@ -1297,7 +1297,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...statisticsPayloadData,
                                   };
-                                  currentState.requestParams.driveNo =
+                                  currentState.requestParams.driveno =
                                     e.target.value;
 
                                   setStatisticsPayloadData(currentState);
@@ -1352,7 +1352,7 @@ function DailyMonitoringList() {
                           )}
                         </form>
                       )}
-                      {/* Implementation of vehicle specification */}
+                      {/* Implementation of vehicle variant and other specs */}
                       {selectedOption === apiData[0].apis[6].apiLink && (
                         <form onSubmit={handleVehicleSpecifications}>
                           {isInputVisible && (
@@ -1379,7 +1379,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehicleSpecificationPayloadData,
                                   };
-                                  currentState.requestParams.vehicleMFD =
+                                  currentState.requestParams.mfd =
                                     e.target.value;
 
                                   setVehicleSpecificationPayloadData(
@@ -1416,7 +1416,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehicleSpecificationPayloadData,
                                   };
-                                  currentState.requestParams.vehicleModel =
+                                  currentState.requestParams.model =
                                     e.target.value;
 
                                   setVehicleSpecificationPayloadData(
@@ -1453,7 +1453,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehicleSpecificationPayloadData,
                                   };
-                                  currentState.requestParams.vehicleFuel =
+                                  currentState.requestParams.fuel =
                                     e.target.value;
 
                                   setVehicleSpecificationPayloadData(
@@ -1496,7 +1496,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.newDeviceID =
+                                  currentState.requestParams.deviceid =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1531,7 +1531,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.newVehicleRegistration =
+                                  currentState.requestParams.veh_registration =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1566,7 +1566,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.newVehicleFuel =
+                                  currentState.requestParams.fuel_type =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1602,7 +1602,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.newVehicleManufacturer =
+                                  currentState.requestParams.veh_manufacturer =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1637,7 +1637,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.newVehicleModel =
+                                  currentState.requestParams.veh_model =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1672,7 +1672,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.newVehicleVarient =
+                                  currentState.requestParams.veh_varient =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1707,7 +1707,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.mfgYear =
+                                  currentState.requestParams.mfg_year =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
@@ -1742,7 +1742,7 @@ function DailyMonitoringList() {
                                   let currentState = {
                                     ...vehiclePayloadData,
                                   };
-                                  currentState.requestParams.engineCapacity =
+                                  currentState.requestParams.engine_capacity =
                                     e.target.value;
 
                                   setVehiclePayloadData(currentState);
